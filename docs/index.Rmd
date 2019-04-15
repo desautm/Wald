@@ -71,3 +71,148 @@ class: inverse, center, middle
 - Mais les Nazis envahissent l'Autriche et il se fait finalement offrir un emploi de professeur de statistiques à l'université Columbia, à New-York
 
 - C'est à partir de ce moment qu'il commence à participer à l'effort de guerre...
+
+---
+layout: false
+class: center, inverse, middle
+
+# Le *Statistical Research Group* (SRG)
+# 1942-1945
+
+---
+
+### Le *Statistical Research Group* (SRG)
+
+.pull-left[
+
+- Toutes les informations présentées proviennent d'un article de W. Allen Wallis, *The Statistical Research Group, 1942-1945*, publié en Juin 1980 dans le *Journal of the American Statistical Association*.
+
+- Dans l'article, Wallis se remémore avec nostalgie ses années au sein du SRG.
+
+- W. Allen Wallis, [*The Statistical Research Group, 1942-1945*](https://www.jstor.org/stable/2287451), Journal of the American Statistical Association **75**, 320-330, 1980.
+
+]
+
+.pull-right[
+
+.center[![Journal of the American Statistical Association](http://explore.tandfonline.com/uploads/images/journals/covers/UASA.jpg)]
+
+]
+
+---
+
+### The Statistical Research Group, 1942-1945
+
+- L'article de Wallis est très bien écrit, avec énormément de panache.
+
+- Il est de plus truffé de citations savoureuses qui rendent la lecture de l'article passionnante.
+
+> *Exploring the history of one's professional field is often a mark of maturity. Reminiscing about it is usually a mark of senility.*
+
+> *We pinched pennies... One principal staff menber still alleges resentfully that the adminstrative assistant told him to economize by writing equations on both sides of the paper.*
+
+> *In 1950 I was 30 years closer to the events than I am now, and, furthermore, I had the use of a 37 year old's memory--something that now I can scarcely recall ever having had.*
+
+> *If the SRG merits more than a footnote in the history of American Statistics, I suppose it is for one of the 31 reasons that can be composed by using one or more of five points, which I shall list and the discuss.*
+
+???
+
+Nous voulons trouver toutes les combinaisons possibles de 5 éléments, en enlevant le cas où nous ne choisissons aucun élément. Nous savons que 2^5-2=32-1=31.
+
+---
+
+### The Statistical Research Group, 1942-1945
+
+Voici les cinq points dont Wallis discute (la traduction est de moi).
+
+1. Le SRG était composé de ce qui est sûrement le plus extraordinaire groupe de statisticiens jamais regroupé, en tenant compte de leur nombre et de leur qualité.
+
+1. L'analyse séquentielle, une des idée statistique les plus puissante et fondatrice du tiers du siècle dernier, a été développée au SRG. Sa théorie et ses méthodes d'application ont été développées ici.
+
+1. Une variété de matériels utiles produits au SRG, à la fois théoriques et pratiques, bien que non comparable avec l'analyse séquentielle, font maintenant tout de même partie des statistiques.
+
+1. L'expérience d'avoir participé au SRG a définitivement contribué aux carrières subséquentes de nombre de personnes qui ont été des leaders en statistiques au cours des 3 décénnies suivantes.
+
+1. SRG a été en de nombreux points un modèle qui n'a jamais été égalé en tant que groupe de consultation statistique efficace.
+
+---
+
+## W. Allen Allis
+
+.pull-left[
+
+- **Wilson Allen Wallis** (5 novembre 1912 - 12 octobre 1998)
+
+- Directeur du SRG
+
+- Économiste et statisticien
+
+- Il a développé le test Kruskal-Wallis avec William Kruskal
+
+]
+
+.pull-right[
+
+![W. Allen Wallis](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/WAllenWallis1970.jpg/442px-WAllenWallis1970.jpg)
+
+]
+
+---
+
+## Milton Friedman
+
+.pull-left[
+
+- Milton Friedman (31 juillet 1912 - 16 novembre 2006)
+
+- Économiste
+
+- Prix Nobel d'économie en 1976 pour ses travaux sur l'analyse de la consommation, l'histoire monétaire et la démonstration de la complexité des politiques de stabilisation
+
+]
+
+.pull-right[
+
+![Milton Friedman](https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Portrait_of_Milton_Friedman.jpg/385px-Portrait_of_Milton_Friedman.jpg)
+]
+
+---
+
+## George Stigler
+
+.pull-left[
+
+- George Stigler (17 janvier 1911 - 1er décembre 1991)
+
+- Économiste
+
+- Prix Nobel d'économie en 1982 pour ses études fondatrices des structures industrielles, du fonctionnement des marchés, et des causes et effets de la régulation publique
+
+]
+
+.pull-right[
+
+.center[![George Stigler](https://upload.wikimedia.org/wikipedia/en/c/c7/George_Stigler.jpg)]
+
+]
+
+---
+
+## Abraham Wald
+
+.pull-left[
+
+- Abraham Wald (31 octobre 1902 - 13 décembre 1950)
+
+- Mathématicien
+
+- Fondateur du domaine de l'analyse séquentielle statistique
+
+]
+
+.pull-right[
+
+![Abraham Wald](https://upload.wikimedia.org/wikipedia/commons/8/85/Abraham_Wald.jpg)
+
+]
+
