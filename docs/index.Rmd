@@ -14,6 +14,11 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+
+library(tidyverse)
+library(DT)
+library(knitr)
+library(DAAG)
 ```
 
 class: inverse, middle
@@ -91,13 +96,23 @@ class: center, inverse, middle
 
 ### Le *Statistical Research Group* (SRG)
 
+--
+
 - Le SRG était basé à l'université Columbia et supporté par le *Applied Mathematics Panel* (AMP) du *National Defense Research Committee* (NDRC), qui faisait partie du *Office of Scientific Research and Development* (OSRD)
+
+--
 
 - Le SRG était un programme secret formé de statisticiens, un peu comme le projet Manhattan mais fabriquant des équations plutôt que des bombes
 
+--
+
 - *[...] when we made recommendations, frequently things happened.* W. Allen Wallis
 
+--
+
 - *Fighter planes entered combat with their machine guns loaded according to Jack Wolfowitz's recommendations about mixing types of ammunition, and maybe the pilots came back or maybe they didn't.*
+
+--
 
 - *Navy planes launched rockets whose propellants had been accepted by Abe Girshick's sampling-inspection plans, and maybe the rockets exploded and destroyed our own planes and pilots or maybe they destroyed the targe*
 
@@ -105,13 +120,23 @@ class: center, inverse, middle
 
 ### Le *Statistical Research Group* (SRG)
 
+--
+
 - *SRG was composed of what surely must be the most extraordinary group of statisticians ever organized, taking into account both number and quality.* W. Allen Wallis
+
+--
 
 - **Wilson Allen Wallis** (5 novembre 1912 - 12 octobre 1998), directeur du SRG, économiste et statisticien. Il a développé le test Kruskal-Wallis avec William Kruskal
 
+--
+
 - **Milton Friedman** (31 juillet 1912 - 16 novembre 2006), économiste. Prix Nobel d'économie en 1976 pour ses travaux sur l'analyse de la consommation, l'histoire monétaire et la démonstration de la complexité des politiques de stabilisation
 
+--
+
 - **George Stigler** (17 janvier 1911 - 1er décembre 1991), économiste. Prix Nobel d'économie en 1982 pour ses études fondatrices des structures industrielles, du fonctionnement des marchés, et des causes et effets de la régulation publique
+
+--
 
 - et j'en passe...
 
@@ -120,11 +145,15 @@ class: center, inverse, middle
 
 # Les mathématiques
 
+--
+
 ### Le biais du survivant
 
 ---
 
 ### Le biais du survivant
+
+--
 
 - Une forme de biais de sélection consistant à surévaluer les chances de succès d'une initiative en concentrant l'attention sur les sujets ayant réussi mais qui sont des exceptions statistiques (des « survivants ») plutôt que des cas représentatifs.
 
@@ -146,9 +175,131 @@ WO Whitney et CJ Mehlhaff, *Journal of the American Veterinary Medical Associati
 
 ---
 
+class: inverse, center, middle
+
+# La navette Challenger
+
+---
+
+background-image: url(https://img2.thejournal.ie/inline/2573246/original/?width=630&version=2573246)
+background-size: cover
+
+---
+
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/3f/Challenger_flight_51-l_crew.jpg)
+background-size: cover
+
+???
+
+STS-51-L crew: (front row) Michael J. Smith, Dick Scobee, Ronald McNair; (back row) Ellison Onizuka, Christa McAuliffe, Gregory Jarvis, Judith Resnik
+
+---
+
+# Challenger
+
+- Le désastre de la navette Challenger s'est déroulé le 28 janvier 1986.
+
+- La navette se brisa et se désintégra après 73 secondes de vol.
+
+- L'accident choqua énormément la société américaine, en partie en raison de la présence de Christa McAuliffe, qui aurait été la première astronaute-enseignante.
+
+- Une des conséquences de cet accident est la mise sur pied de la *Rogers Commission* (formé par Neil A. Armstrong et le prix Nobel Richard P. Feynman, entre autre).
+
+- Cette commission que la désintégration est causée par l'échec d'un joint d'étanchéité en raison des températures inhabituellements froides.
+
+### Le problème des joints d'étanchéité était connu!
+
+---
+
+### Les joints d'étanchéité
+
+```{r nasa, echo=FALSE, tidy=FALSE}
+nasa <- tibble(
+  Flight =c("51-C","41-B","61-C","41-C","1","6","51-A","51-D","5","3","2","9","41-D","51-G","7","8","51-B","61-A","51-I","61-B","41-G","51-J",NA,"51-F"),
+  Date = c("1985-01-24","1984-02-03","1986-01-12","1984-04-06","1981-04-12","1983-04-04","1984-11-08","1985-04-12","1982-11-11","1982-03-22","1981-11-12","1983-11-28","1984-08-30","1985-06-17","1983-06-18","1983-08-30","1985-04-29","1985-10-30","1985-08-27","1985-11-26","1984-10-05","1985-10-03","1982-06-27","1985-07-29"),
+  Temperature = c(53,57,58,63,66,67,67,67,68,69,70,70,70,70,72,73,75,75,76,76,78,79,80,81),
+  Erosion = c(3,1,1,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0),
+  Blowby = c(2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0),
+  ErosionOrBlowBy = c(3,1,1,1,0,0,0,0,0,0,1,0,1,0,0,0,0,2,0,0,0,0,0,0),
+  Total = 6,
+  DamageIndex = c(11,4,4,2,0,0,0,0,0,0,4,0,4,0,0,0,0,4,0,0,0,0,NA,0),
+  Comments = c("Most erosion any flight; blow-by; back-up rings heated.",
+               "Deep, extensive erosion.",
+               "O-ring erosion on launch twoo weeks before Challenger.",
+               "O-rings showed signs of heating, but no damage.",
+               "Coolest (66 degrees) launch withouth O-rings problems.",
+               "None","None","None","None","None",
+               "Extent of erosion not fully known",
+               "None","None","None","None","None","None",
+               "No erosion. Soot found behind two primary O-rings.",
+               "None","None","None","None",
+               "O-ring condition unknown; rocket casing lost at sea.",
+               "None")
+)
+nasa <- nasa %>% 
+  mutate(
+    Incident = if_else(DamageIndex > 0, 1, 0),
+    Celsius = (Temperature-32)*5/9
+  )
+```
+
+La nuit avant le décollage, une téléconférence a eue lieu entre les ingénieurs, les directeurs de la NASA, pour discuter des effets des basses températures sur le décollage et les joints d'étanchéité. La conclusion a été fortement influencée par la figure ci-dessous.
+
+> *Temperature data [are] not conclusive on predicting primary O-ring blowby.*
+
+```{r, echo = FALSE, fig.align='center', fig.height = 5}
+nasa %>% 
+  filter(DamageIndex > 0) %>% 
+  ggplot(aes(x = Celsius, y = ErosionOrBlowBy)) +
+  geom_point() +
+  scale_x_continuous(name = "Température", limits = c(0,30), breaks = seq(0,30,5))  +
+  scale_y_discrete(name = "Nombre d'incidents", limits = seq(0,3,1))
+```
+
+---
+
+### Les joints d'étanchéité
+
+La commissions Rogers trouva une grave erreur dans la figure précédente, **les vols sans aucuns incidents avaient été exclus** du graphique car *on croyait* que **ces vols ne contribuaient aucune information sur l'effet de la température**.
+
+> *A careful analysis of the flight history of O-ring performance would have revealed the correlation of O-ring damage in low temperature*
+
+```{r, echo = FALSE, fig.align='center', fig.height = 5}
+nasa %>% 
+  ggplot(aes(x = Celsius, y = ErosionOrBlowBy)) +
+  geom_jitter(width = 0, height = 0.1) +
+  scale_x_continuous(name = "Température", limits = c(0,30), breaks = seq(0,30,5))  +
+  scale_y_discrete(name = "Nombre d'incidents", limits = seq(0,3,1))
+```
+
+---
+
+# Challenger
+
+
+
+
+---
+
 ## Concernant Abraham Wald
 
 > *The military was inclined to provide protection for those parts that on returning planes showed the most hits. Wald assumed, on good evidence, that hits in combat were uniformly distributed over the planes. It follows that hits on the more vulnerable parts were less likely to be found on returning planes than hits on the less vulnerable parts, since planes receiving hits on the more vulnerable parts were less likely to return to provide data. From these premises, he devised methods for estimating vulnerability of various parts.*
+
+---
+
+class: middle
+
+.center[
+<img src="https://i.gifer.com/36jI.gif" width=80%>
+]
+
+---
+
+class: middle
+
+.center[
+<img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=80%>
+]
 
 ---
 
