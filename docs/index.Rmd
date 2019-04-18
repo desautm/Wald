@@ -16,9 +16,7 @@ output:
 options(htmltools.dir.version = FALSE)
 
 library(tidyverse)
-library(DT)
-library(knitr)
-library(DAAG)
+library(kableExtra)
 ```
 
 class: inverse, middle
@@ -218,14 +216,13 @@ nasa <- tibble(
   Flight =c("51-C","41-B","61-C","41-C","1","6","51-A","51-D","5","3","2","9","41-D","51-G","7","8","51-B","61-A","51-I","61-B","41-G","51-J",NA,"51-F"),
   Date = c("1985-01-24","1984-02-03","1986-01-12","1984-04-06","1981-04-12","1983-04-04","1984-11-08","1985-04-12","1982-11-11","1982-03-22","1981-11-12","1983-11-28","1984-08-30","1985-06-17","1983-06-18","1983-08-30","1985-04-29","1985-10-30","1985-08-27","1985-11-26","1984-10-05","1985-10-03","1982-06-27","1985-07-29"),
   Temperature = c(53,57,58,63,66,67,67,67,68,69,70,70,70,70,72,73,75,75,76,76,78,79,80,81),
-  Erosion = c(3,1,1,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0),
+  Erosion = c(2,1,1,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0),
   Blowby = c(2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0),
-  ErosionOrBlowBy = c(3,1,1,1,0,0,0,0,0,0,1,0,1,0,0,0,0,2,0,0,0,0,0,0),
   Total = 6,
   DamageIndex = c(11,4,4,2,0,0,0,0,0,0,4,0,4,0,0,0,0,4,0,0,0,0,NA,0),
   Comments = c("Most erosion any flight; blow-by; back-up rings heated.",
                "Deep, extensive erosion.",
-               "O-ring erosion on launch twoo weeks before Challenger.",
+               "O-ring erosion on launch two weeks before Challenger.",
                "O-rings showed signs of heating, but no damage.",
                "Coolest (66 degrees) launch withouth O-rings problems.",
                "None","None","None","None","None",
@@ -236,12 +233,28 @@ nasa <- tibble(
                "O-ring condition unknown; rocket casing lost at sea.",
                "None")
 )
+```
+
+```{r, echo=FALSE}
+nasa %>% 
+  kable(format = "html") %>% 
+  kable_styling(font_size = 12) %>% 
+  scroll_box(width = "100%", height = "80%")
+```
+
+---
+
+### Les joints d'étanchéité
+
+```{r, echo=FALSE}
 nasa <- nasa %>% 
   mutate(
+    ErosionOrBlowby = if_else(Erosion >= Blowby, Erosion, Blowby),
     Incident = if_else(DamageIndex > 0, 1, 0),
     Celsius = (Temperature-32)*5/9
   )
 ```
+
 
 La nuit avant le décollage, une téléconférence a eue lieu entre les ingénieurs, les directeurs de la NASA, pour discuter des effets des basses températures sur le décollage et les joints d'étanchéité. La conclusion a été fortement influencée par la figure ci-dessous.
 
@@ -250,7 +263,7 @@ La nuit avant le décollage, une téléconférence a eue lieu entre les ingénie
 ```{r, echo = FALSE, fig.align='center', fig.height = 5}
 nasa %>% 
   filter(DamageIndex > 0) %>% 
-  ggplot(aes(x = Celsius, y = ErosionOrBlowBy)) +
+  ggplot(aes(x = Celsius, y = ErosionOrBlowby)) +
   geom_point() +
   scale_x_continuous(name = "Température", limits = c(0,30), breaks = seq(0,30,5))  +
   scale_y_discrete(name = "Nombre d'incidents", limits = seq(0,3,1))
@@ -266,7 +279,7 @@ La commissions Rogers trouva une grave erreur dans la figure précédente, **les
 
 ```{r, echo = FALSE, fig.align='center', fig.height = 5}
 nasa %>% 
-  ggplot(aes(x = Celsius, y = ErosionOrBlowBy)) +
+  ggplot(aes(x = Celsius, y = ErosionOrBlowby)) +
   geom_jitter(width = 0, height = 0.1) +
   scale_x_continuous(name = "Température", limits = c(0,30), breaks = seq(0,30,5))  +
   scale_y_discrete(name = "Nombre d'incidents", limits = seq(0,3,1))
