@@ -4,7 +4,7 @@
     <title>Abraham Wald et les trous de balles manquants.</title>
     <meta charset="utf-8" />
     <meta name="author" content="Marc-André Désautels" />
-    <meta name="date" content="2019-04-18" />
+    <meta name="date" content="2019-04-23" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint/kePrint.js"></script>
@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # Abraham Wald et les trous de balles manquants.
 ## encore une présentation sur la Seconde Guerre Mondiale…
 ### Marc-André Désautels
-### 2019-04-18
+### 2019-04-23
 
 ---
 
@@ -147,27 +147,38 @@ class: center, inverse, middle
 
 # Les mathématiques
 
+---
+class: center middle
+
+## Le biais du survivant
+
 --
 
-### Le biais du survivant
+### Une forme de biais de sélection consistant à surévaluer les chances de succès d'une initiative en concentrant l'attention sur les sujets ayant réussi mais qui sont des exceptions statistiques (des « survivants ») plutôt que des cas représentatifs.
 
 ---
 
-### Le biais du survivant
+### Quelques exemples
 
 --
 
-- Une forme de biais de sélection consistant à surévaluer les chances de succès d'une initiative en concentrant l'attention sur les sujets ayant réussi mais qui sont des exceptions statistiques (des « survivants ») plutôt que des cas représentatifs.
-
 - En finance, le biais du survivant survient lors de l'exclusion des entreprises ayant fait faillite des études de performance.
 
-- Une étude réalisée en 1987 montre que les chats qui chutent d'une hauteur équivalente à moins de six étages et qui survivent ont des blessures plus graves que les chats tombant d'une hauteur plus élevée.
+--
 
 - En production industrielle, on entend souvent « les produits étaient mieux fabriqués avant ».
 
+--
+
 - En architecture et en construction, les bâtiments de plus de 100 ans encore debout.
 
+--
+
 - Dans les carrières hypercompétitives, commes les athlètes d'élite.
+
+--
+
+- Une étude réalisée en 1987 montre que les chats qui chutent d'une hauteur équivalente à moins de six étages et qui survivent ont des blessures plus graves que les chats tombant d'une hauteur plus élevée.
 
 ???
 
@@ -183,7 +194,7 @@ class: inverse, center, middle
 
 ---
 
-background-image: url(https://img2.thejournal.ie/inline/2573246/original/?width=630&amp;version=2573246)
+background-image: url(https://natgeo.imgix.net/factsheets/thumbnails/ChallengerDisaster.jpg?auto=compress,format&amp;w=1024&amp;h=560&amp;fit=crop)
 background-size: cover
 
 ---
@@ -197,23 +208,40 @@ STS-51-L crew: (front row) Michael J. Smith, Dick Scobee, Ronald McNair; (back r
 
 ---
 
+background-image: url(https://img2.thejournal.ie/inline/2573246/original/?width=630&amp;version=2573246)
+background-size: cover
+
+---
+
 # Challenger
+
+--
 
 - Le désastre de la navette Challenger s'est déroulé le 28 janvier 1986.
 
+--
+
 - La navette se brisa et se désintégra après 73 secondes de vol.
+
+--
 
 - L'accident choqua énormément la société américaine, en partie en raison de la présence de Christa McAuliffe, qui aurait été la première astronaute-enseignante.
 
+--
+
 - Une des conséquences de cet accident est la mise sur pied de la *Rogers Commission* (formé par Neil A. Armstrong et le prix Nobel Richard P. Feynman, entre autre).
 
-- Cette commission que la désintégration est causée par l'échec d'un joint d'étanchéité en raison des températures inhabituellements froides.
+--
+
+- Cette commission conclut que la désintégration est causée par l'échec d'un joint d'étanchéité en raison des températures inhabituellements froides.
+
+--
 
 ### Le problème des joints d'étanchéité était connu!
 
 ---
 
-### Les joints d'étanchéité
+### Les données concernant les joints d'étanchéité
 
 
 
@@ -259,7 +287,7 @@ STS-51-L crew: (front row) Michael J. Smith, Dick Scobee, Ronald McNair; (back r
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; O-ring erosion on launch twoo weeks before Challenger. &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; O-ring erosion on launch two weeks before Challenger. &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; 41-C &lt;/td&gt;
@@ -480,29 +508,53 @@ STS-51-L crew: (front row) Michael J. Smith, Dick Scobee, Ronald McNair; (back r
 
 
 
+La nuit avant le décollage, une téléconférence a eue lieu entre les ingénieurs, les directeurs de la NASA, pour discuter des effets des basses températures sur le décollage et les joints d'étanchéité.
 
-La nuit avant le décollage, une téléconférence a eue lieu entre les ingénieurs, les directeurs de la NASA, pour discuter des effets des basses températures sur le décollage et les joints d'étanchéité. La conclusion a été fortement influencée par la figure ci-dessous.
+--
 
 &gt; *Temperature data [are] not conclusive on predicting primary O-ring blowby.*
 
-&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+--
+
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" width="504" style="display: block; margin: auto;" /&gt;
+
+???
+
+La conclusion a été fortement influencée par la figure ci-dessous.
 
 ---
 
 ### Les joints d'étanchéité
 
-La commissions Rogers trouva une grave erreur dans la figure précédente, **les vols sans aucuns incidents avaient été exclus** du graphique car *on croyait* que **ces vols ne contribuaient aucune information sur l'effet de la température**.
+--
+
+La commission Rogers trouva une grave erreur dans la figure précédente, **les vols sans aucuns incidents avaient été exclus** du graphique car *on croyait* que **ces vols ne contribuaient aucune information sur l'effet de la température**.
+
+--
 
 &gt; *A careful analysis of the flight history of O-ring performance would have revealed the correlation of O-ring damage in low temperature*
 
-&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+--
+
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Challenger
+### Les joints d'étanchéité
 
+&lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
+---
 
+### Les joints d'étanchéité
+
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Les joints d'étanchéité
+
+&lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -515,7 +567,7 @@ La commissions Rogers trouva une grave erreur dans la figure précédente, **les
 class: middle
 
 .center[
-&lt;img src="https://i.gifer.com/36jI.gif" width=80%&gt;
+&lt;img src="https://i.gifer.com/36jI.gif" width=90%&gt;
 ]
 
 ---
@@ -523,7 +575,7 @@ class: middle
 class: middle
 
 .center[
-&lt;img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=80%&gt;
+&lt;img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%&gt;
 ]
 
 ---
