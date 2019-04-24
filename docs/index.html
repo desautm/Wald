@@ -4,7 +4,7 @@
     <title>Abraham Wald et les trous de balles manquants.</title>
     <meta charset="utf-8" />
     <meta name="author" content="Marc-André Désautels" />
-    <meta name="date" content="2019-04-23" />
+    <meta name="date" content="2019-04-24" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint/kePrint.js"></script>
@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # Abraham Wald et les trous de balles manquants.
 ## encore une présentation sur la Seconde Guerre Mondiale…
 ### Marc-André Désautels
-### 2019-04-23
+### 2019-04-24
 
 ---
 
@@ -540,21 +540,66 @@ La commission Rogers trouva une grave erreur dans la figure précédente, **les 
 
 ---
 
-### Les joints d'étanchéité
+### Une régression logistique
 
 &lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
 ---
 
-### Les joints d'étanchéité
+### Une régression logistique
 
 &lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
 ---
 
-### Les joints d'étanchéité
+### Une régression logistique
 
 &lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Les trous de balles manquants
+
+**Question**: Vous ne voulez pas que vos avions soient abattus par des tirs ennemis, vous décidez donc de leur ajouter du blindage. Mais du blindage alourdit vos avions, les rend moins manoeuvrables et ceux-ci utilisent davantage de carburant. 
+
+- Mettre trop de blindage est un problème
+
+- Ne pas mettre assez de blindage est un problème
+
+### Que faire???
+
+---
+
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Survivorship-bias.png/1024px-Survivorship-bias.png)
+background-size: cover
+
+---
+
+### Les trous de balles manquants
+
+.center[![avion troué](https://res.cloudinary.com/dzawgnnlr/image/upload/q_auto/f_auto/w_auto/bullet-riddled-plane.jpg)]
+
+Les avions revenaient du combat couverts de trous de balles, mais les trous n'étaient pas uniformément distribués sur tout l'avion.
+
+---
+
+### Les trous de balles manquants
+
+Voici quelques données provenant d'avions revenant du théatre des opérations d'Europe.
+
+#### **Question: Quelles sont les parties de l'avion nécessitant la plus grande quantité de blindage?**
+
+|            Section de l'avion           | Nombre de trous par pieds carrés |
+|-----------------------------------------|----------------------------------|
+| Moteur                                  | 1,11                             |
+| Fuselage (partie principale de l'avion) | 1,73                             |
+| Système de carburant                    | 1,55                             |
+| Reste de l'avion                        | 1,8                              |
+
+
+---
+
+&lt;iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQBG2CrEJupzUKF4BGpZEEu9ODLlB3P9H4jxJvo0csk12c7-0ZksZ2rfDoJx4IS5vv9Ln4jjoM2cZr-/pubchart?oid=80123736&amp;amp;format=interactive"&gt;&lt;/iframe&gt;
 
 ---
 
@@ -577,11 +622,6 @@ class: middle
 .center[
 &lt;img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%&gt;
 ]
-
----
-
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Survivorship-bias.png/1024px-Survivorship-bias.png)
-background-size: cover
 
 ---
 class: center, inverse, middle
