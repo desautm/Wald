@@ -7,6 +7,7 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     nature:
+      beforeInit: "macros.js"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
@@ -371,6 +372,19 @@ challenger +
 ```
 
 ---
+class: inverse, center, middle
+
+## Les trous de balles manquants
+
+---
+
+class: middle
+
+.center[
+<img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%>
+]
+
+---
 
 ### Les trous de balles manquants
 
@@ -409,6 +423,51 @@ Voici quelques données provenant d'avions revenant du théatre des opérations 
 | Fuselage (partie principale de l'avion) | 1,73                             |
 | Système de carburant                    | 1,55                             |
 | Reste de l'avion                        | 1,8                              |
+
+--
+
+### Vous pouvez voter à l'adresse: [http://bit.ly/TrousBalles](http://bit.ly/TrousBalles)
+
+---
+### Les résultats
+
+<iframe seamless src="https://docs.google.com/spreadsheets/d/1tgbKRrHQnyDP2lvgH5iQhrxLG75C3TafKSjFwmVEqkM/htmlembed/sheet?gid=1284962309&range=D2" width="800" height="500" frameborder="0" scrolling="no"></iframe>
+
+---
+
+### Les trous de balles manquants
+
+Wald indiqua que le blindage ne devait pas aller aux endroits **où il avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
+
+--
+
+- Le raisonnement de Wald était le suivant: où sont les trous manquants?
+
+--
+
+- Les trous manquants sont sur les avions qui ne sont pas revenus.
+
+--
+
+- La raison pour laquelle les avions de retour avaient moins de trous dans la région des moteurs était que les avions ayant été touchés aux moteurs ne revenaient pas.
+
+--
+
+- Comment est-ce que Wald a pu voir ce que les officiers expérimentés de l'armée ne pouvaient pas voir?
+
+---
+
+### Les trous de balles manquants
+
+- Un statisticien se pose toujours la question suivante: Quelles sont les hypothèses que vous faites? Sont-elles justifiées?
+
+--
+
+- Les officiers de l'armée étaient sous l'impression que les avions qui revenaient formaient un échantillon aléatoire de tous les avions.
+
+--
+
+- Une fois que vous avez compris que c'est l'hypothèse sous laquelle vous travaillez, ça prend un petit moment pour comprendre que vous faites fausse route.
 
 ---
 
