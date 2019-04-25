@@ -7,16 +7,15 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     nature:
-      beforeInit: "macros.js"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE)
+library(knitr)
+opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE)
 options(htmltools.dir.version = FALSE)
-
 library(tidyverse)
 library(kableExtra)
 ```
@@ -413,7 +412,11 @@ Les avions revenaient du combat couverts de trous de balles, mais les trous n'é
 
 ### Les trous de balles manquants
 
-Voici quelques données provenant d'avions revenant du théatre des opérations d'Europe.
+Les officiers de l'armée y ont vu une opportunité d'efficacité.
+
+Obtenir la même protection avec moins de blindage, si on se concentre sur les endroits en ayant davantage besoin.
+
+Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties de l'avion.
 
 #### **Question: Quelles sont les parties de l'avion nécessitant la plus grande quantité de blindage?**
 
