@@ -144,8 +144,132 @@ class: center, inverse, middle
 
 # Les mathématiques
 
+--
+
+## Les trous de balles manquants
+
 ---
-class: center middle
+
+class: middle
+
+.center[
+<img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%>
+]
+
+---
+
+### Les trous de balles manquants
+
+**Question**: Vous ne voulez pas que vos avions soient abattus par des tirs ennemis, vous décidez donc de leur ajouter du blindage. Mais du blindage alourdit vos avions, les rend moins manoeuvrables et ceux-ci utilisent davantage de carburant.
+
+--
+
+- Mettre trop de blindage est un problème
+
+--
+
+- Ne pas mettre assez de blindage est un problème
+
+--
+
+### Que faire???
+
+---
+
+### Les trous de balles manquants
+
+.center[![avion troué](https://res.cloudinary.com/dzawgnnlr/image/upload/q_auto/f_auto/w_auto/bullet-riddled-plane.jpg)]
+
+Les avions revenaient du combat couverts de trous de balles, mais les trous n'étaient pas uniformément distribués sur tout l'avion.
+
+---
+
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Survivorship-bias.png/1024px-Survivorship-bias.png)
+background-size: cover
+
+---
+
+### Les trous de balles manquants
+
+Les officiers de l'armée y ont vu une opportunité d'efficacité.
+
+Obtenir la même protection avec moins de blindage, si on se concentre sur les endroits en ayant davantage besoin.
+
+Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties de l'avion.
+
+--
+
+#### **Question: Quelles sont les parties de l'avion nécessitant la plus grande quantité de blindage?**
+
+|            Section de l'avion           | Nombre de trous par pieds carrés |
+|-----------------------------------------|----------------------------------|
+| Moteur                                  | 1,11                             |
+| Fuselage (partie principale de l'avion) | 1,73                             |
+| Système de carburant                    | 1,55                             |
+| Reste de l'avion                        | 1,8                              |
+
+--
+
+### Vous pouvez voter à l'adresse: [http://bit.ly/TrousBalles](http://bit.ly/TrousBalles)
+
+---
+### Les résultats
+
+<iframe seamless src="https://docs.google.com/spreadsheets/d/1tgbKRrHQnyDP2lvgH5iQhrxLG75C3TafKSjFwmVEqkM/htmlembed/sheet?gid=1284962309&range=D2" width="800" height="500" frameborder="0" scrolling="no"></iframe>
+
+---
+
+### Les trous de balles manquants
+
+Wald indiqua que le blindage ne devait pas aller aux endroits **où il avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
+
+--
+
+- Le raisonnement de Wald était le suivant: où sont les trous manquants?
+
+--
+
+- Les trous manquants sont sur les avions qui ne sont pas revenus.
+
+--
+
+- La raison pour laquelle les avions de retour avaient moins de trous dans la région des moteurs était que les avions ayant été touchés aux moteurs ne revenaient pas.
+
+--
+
+- Comment est-ce que Wald a pu voir ce que les officiers expérimentés de l'armée ne pouvaient pas voir?
+
+---
+
+### Les trous de balles manquants
+
+- Un statisticien se pose toujours la question suivante: Quelles sont les hypothèses que vous faites? Sont-elles justifiées?
+
+--
+
+- Les officiers de l'armée étaient sous l'impression que les avions qui revenaient formaient un échantillon aléatoire de tous les avions.
+
+--
+
+- Une fois que vous avez compris que c'est l'hypothèse sous laquelle vous travaillez, ça prend un petit moment pour comprendre que vous faites fausse route.
+
+---
+
+## Concernant Abraham Wald
+
+> *The military was inclined to provide protection for those parts that on returning planes showed the most hits. Wald assumed, on good evidence, that hits in combat were uniformly distributed over the planes. It follows that hits on the more vulnerable parts were less likely to be found on returning planes than hits on the less vulnerable parts, since planes receiving hits on the more vulnerable parts were less likely to return to provide data. From these premises, he devised methods for estimating vulnerability of various parts.*
+
+---
+
+class: middle
+
+.center[
+<img src="https://i.gifer.com/36jI.gif" width=90%>
+]
+
+
+---
+class: inverse, center middle
 
 ## Le biais du survivant
 
@@ -369,122 +493,6 @@ challenger +
   geom_text(x = 1, y = 0, label = "Challenger", color = "red") +
   stat_function(fun = incidents, colour = "blue")
 ```
-
----
-class: inverse, center, middle
-
-## Les trous de balles manquants
-
----
-
-class: middle
-
-.center[
-<img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%>
-]
-
----
-
-### Les trous de balles manquants
-
-**Question**: Vous ne voulez pas que vos avions soient abattus par des tirs ennemis, vous décidez donc de leur ajouter du blindage. Mais du blindage alourdit vos avions, les rend moins manoeuvrables et ceux-ci utilisent davantage de carburant. 
-
-- Mettre trop de blindage est un problème
-
-- Ne pas mettre assez de blindage est un problème
-
-### Que faire???
-
----
-
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Survivorship-bias.png/1024px-Survivorship-bias.png)
-background-size: cover
-
----
-
-### Les trous de balles manquants
-
-.center[![avion troué](https://res.cloudinary.com/dzawgnnlr/image/upload/q_auto/f_auto/w_auto/bullet-riddled-plane.jpg)]
-
-Les avions revenaient du combat couverts de trous de balles, mais les trous n'étaient pas uniformément distribués sur tout l'avion.
-
----
-
-### Les trous de balles manquants
-
-Les officiers de l'armée y ont vu une opportunité d'efficacité.
-
-Obtenir la même protection avec moins de blindage, si on se concentre sur les endroits en ayant davantage besoin.
-
-Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties de l'avion.
-
-#### **Question: Quelles sont les parties de l'avion nécessitant la plus grande quantité de blindage?**
-
-|            Section de l'avion           | Nombre de trous par pieds carrés |
-|-----------------------------------------|----------------------------------|
-| Moteur                                  | 1,11                             |
-| Fuselage (partie principale de l'avion) | 1,73                             |
-| Système de carburant                    | 1,55                             |
-| Reste de l'avion                        | 1,8                              |
-
---
-
-### Vous pouvez voter à l'adresse: [http://bit.ly/TrousBalles](http://bit.ly/TrousBalles)
-
----
-### Les résultats
-
-<iframe seamless src="https://docs.google.com/spreadsheets/d/1tgbKRrHQnyDP2lvgH5iQhrxLG75C3TafKSjFwmVEqkM/htmlembed/sheet?gid=1284962309&range=D2" width="800" height="500" frameborder="0" scrolling="no"></iframe>
-
----
-
-### Les trous de balles manquants
-
-Wald indiqua que le blindage ne devait pas aller aux endroits **où il avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
-
---
-
-- Le raisonnement de Wald était le suivant: où sont les trous manquants?
-
---
-
-- Les trous manquants sont sur les avions qui ne sont pas revenus.
-
---
-
-- La raison pour laquelle les avions de retour avaient moins de trous dans la région des moteurs était que les avions ayant été touchés aux moteurs ne revenaient pas.
-
---
-
-- Comment est-ce que Wald a pu voir ce que les officiers expérimentés de l'armée ne pouvaient pas voir?
-
----
-
-### Les trous de balles manquants
-
-- Un statisticien se pose toujours la question suivante: Quelles sont les hypothèses que vous faites? Sont-elles justifiées?
-
---
-
-- Les officiers de l'armée étaient sous l'impression que les avions qui revenaient formaient un échantillon aléatoire de tous les avions.
-
---
-
-- Une fois que vous avez compris que c'est l'hypothèse sous laquelle vous travaillez, ça prend un petit moment pour comprendre que vous faites fausse route.
-
----
-
-## Concernant Abraham Wald
-
-> *The military was inclined to provide protection for those parts that on returning planes showed the most hits. Wald assumed, on good evidence, that hits in combat were uniformly distributed over the planes. It follows that hits on the more vulnerable parts were less likely to be found on returning planes than hits on the less vulnerable parts, since planes receiving hits on the more vulnerable parts were less likely to return to provide data. From these premises, he devised methods for estimating vulnerability of various parts.*
-
----
-
-class: middle
-
-.center[
-<img src="https://i.gifer.com/36jI.gif" width=90%>
-]
 
 ---
 
