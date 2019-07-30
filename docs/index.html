@@ -1,746 +1,861 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>Presentation Ninja</title>
+    <title>Abraham Wald et les trous de balles manquants.</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Yihui Xie" />
+    <meta name="author" content="Marc-André Désautels" />
+    <meta name="date" content="2019-07-16" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
-    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
-    <script src="libs/jquery/jquery.min.js"></script>
-    <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
-    <script src="libs/leaflet/leaflet.js"></script>
-    <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-    <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
-    <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
-    <link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
-    <script src="libs/leaflet-binding/leaflet.js"></script>
-    <link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
-    <script src="libs/datatables-binding/datatables.js"></script>
-    <link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
-    <script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
-    <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
-    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Presentation Ninja
-## ⚔<br/>with xaringan
-### Yihui Xie
-### 2016/12/12 (updated: 2019-04-15)
+# Abraham Wald et les trous de balles manquants.
+## encore une présentation sur la Seconde Guerre Mondiale…
+### Marc-André Désautels
+### 2019-07-16
 
 ---
 
 
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
 
 
+class: inverse, middle
 
-???
+## *This story, like many World War II stories, start with the Nazis hounding a Jew out of Europe and ends with the Nazis regretting it.*
 
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+### Jordan Ellenberg
 
 ---
+
 class: center, middle
 
-# xaringan
-
-### /ʃaː.'riŋ.ɡan/
+.center[
+&lt;img src="https://media.giphy.com/media/k5DmEDkonEpVu/giphy.gif" width=80%&gt;
+]
 
 ---
 class: inverse, center, middle
 
-# Get Started
+# La jeunesse
 
 ---
 
-# Hello World
-
-Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
-
-
-```r
-devtools::install_github("yihui/xaringan")
-```
-
---
-
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
-
-- Create a new R Markdown document from the menu `File -&gt; New File -&gt; R Markdown -&gt; From Template -&gt; Ninja Presentation`;&lt;sup&gt;1&lt;/sup&gt;
-
---
-
-- Click the `Knit` button to compile it;
-
---
-
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)&lt;sup&gt;2&lt;/sup&gt; "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
-
-.footnote[
-[1] 中文用户请看[这份教程](http://slides.yihui.name/xaringan/zh-CN.html)
-
-[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
-]
-
----
-background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
-background-position: 50% 50%
-class: center, bottom, inverse
-
-# You only live once!
-
----
-
-# Hello Ninja
-
-As a presentation ninja, you certainly should not be satisfied by the "Hello World" example. You need to understand more about two things:
-
-1. The [remark.js](https://remarkjs.com) library;
-
-1. The **xaringan** package;
-
-Basically **xaringan** injected the chakra of R Markdown (minus Pandoc) into **remark.js**. The slides are rendered by remark.js in the web browser, and the Markdown source needed by remark.js is generated from R Markdown (**knitr**).
-
----
-
-# remark.js
-
-You can see an introduction of remark.js from [its homepage](https://remarkjs.com). You should read the [remark.js Wiki](https://github.com/gnab/remark/wiki) at least once to know how to
-
-- create a new slide (Markdown syntax&lt;sup&gt;*&lt;/sup&gt; and slide properties);
-
-- format a slide (e.g. text alignment);
-
-- configure the slideshow;
-
-- and use the presentation (keyboard shortcuts).
-
-It is important to be familiar with remark.js before you can understand the options in **xaringan**.
-
-.footnote[[*] It is different with Pandoc's Markdown! It is limited but should be enough for presentation purposes. Come on... You do not need a slide for the Table of Contents! Well, the Markdown support in remark.js [may be improved](https://github.com/gnab/remark/issues/142) in the future.]
-
----
-background-image: url(https://github.com/yihui/xaringan/releases/download/v0.0.2/karl-moustache.jpg)
-background-size: cover
-class: center, bottom, inverse
-
-# I was so happy to have discovered remark.js!
-
----
-class: inverse, middle, center
-
-# Using xaringan
-
----
-
-# xaringan
-
-Provides an R Markdown output format `xaringan::moon_reader` as a wrapper for remark.js, and you can use it in the YAML metadata, e.g.
-
-```yaml
----
-title: "A Cool Presentation"
-output:
-  xaringan::moon_reader:
-    yolo: true
-    nature:
-      autoplay: 30000
----
-```
-
-See the help page `?xaringan::moon_reader` for all possible options that you can use.
-
----
-
-# remark.js vs xaringan
-
-Some differences between using remark.js (left) and using **xaringan** (right):
+# Abraham Wald
 
 .pull-left[
-1. Start with a boilerplate HTML file;
 
-1. Plain Markdown;
+- Né le 31 octobre 1902 à Cluj-Napoca en Roumanie
 
-1. Write JavaScript to autoplay slides;
+- En 1927, il entre à l'université de Vienne (Autriche) où il reçoit un doctorat en mathématiques en 1931, sous la direction de Karl Menger
 
-1. Manually configure MathJax;
+- À la fin de ses études, en raison de la discrimination de l'Autriche face aux Juifs, il ne parvient pas à se trouver un emploi
 
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
 ]
-
 .pull-right[
-1. Start with an R Markdown document;
 
-1. R Markdown (can embed R/other code chunks);
+.center[
 
-1. Provide an option `autoplay`;
+![Un jeune Abraham Wald](https://upload.wikimedia.org/wikipedia/en/0/05/Abraham_Wald_in_his_youth.jpg)
 
-1. MathJax just works;&lt;sup&gt;*&lt;/sup&gt;
-
-1. Highlight code with `{{}}`;
-
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
 ]
 
-.footnote[[*] Not really. See next page.]
+]
 
 ---
 
-# Math Expressions
+# Abraham Wald
 
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &amp;#36;\alpha+\beta$ renders `\(\alpha+\beta\)`. You can use the display style with double dollar signs:
+- Il se fait offrir un emploi en économie par Oskar Morgenstern (celui-ci émigre plus tard aux États-Unis et aide à inventer la thérie des jeux)
 
-```
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
+- Malgré la situation politique qui se dégrade en Autriche, Wald hésite à émigrer
 
-`$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$`
+- Mais les Nazis envahissent l'Autriche en 1938 et Wald part aux États-Unis avec sa famille
 
-Limitations:
+- Grâce à son expérience en économie, il reçoit une bourse pour travailler pour la *Cowles Commision for Research in Economics* un institut basé au Colorado
 
-1. The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
+- Il se fait finalement offrir un emploi de professeur de statistiques à l'université Columbia, à New-York
 
-1. There should not be spaces after the opening `$` or before the closing `$`.
+--
 
-1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
+### C'est à partir de ce moment qu'il commence à participer à l'effort de guerre...
+
+???
+
+Despite Wald's brilliance, he could not obtain a university position, because of Austrian discrimination against Jews. However, Oskar Morgenstern created a position for Wald in economics. When the Nazis invaded Austria in 1938, the discrimination against Jews intensified. In particular, Wald and his family were persecuted as Jews. Wald was able to emigrate to the United States, at the invitation of the Cowles Commission for Research in Economics, to work on econometrics research
+
+---
+layout: false
+class: center, inverse, middle
+
+# Le *Statistical Research Group* (SRG)
+# 1942-1945
 
 ---
 
-# R Code
+### Le *Statistical Research Group* (SRG)
 
+--
 
-```r
-# a boring regression
-fit = lm(dist ~ 1 + speed, data = cars)
-coef(summary(fit))
-```
+- Le SRG était basé à l'université Columbia et supporté par le *Applied Mathematics Panel* (AMP) du *National Defense Research Committee* (NDRC), qui faisait partie du *Office of Scientific Research and Development* (OSRD)
 
-```
-#               Estimate Std. Error   t value     Pr(&gt;|t|)
-# (Intercept) -17.579095  6.7584402 -2.601058 1.231882e-02
-# speed         3.932409  0.4155128  9.463990 1.489836e-12
-```
+--
 
-```r
-dojutsu = c('地爆天星', '天照', '加具土命', '神威', '須佐能乎', '無限月読')
-grep('天', dojutsu, value = TRUE)
-```
+- Le SRG était un programme secret formé de statisticiens, un peu comme le projet Manhattan mais fabriquant des équations plutôt que des bombes
 
-```
-# character(0)
-```
+--
+
+- *[...] when we made recommendations, frequently things happened.* W. Allen Wallis
+
+--
+
+- *Fighter planes entered combat with their machine guns loaded according to Jack Wolfowitz's recommendations about mixing types of ammunition, and maybe the pilots came back or maybe they didn't.*
+
+--
+
+- *Navy planes launched rockets whose propellants had been accepted by Abe Girshick's sampling-inspection plans, and maybe the rockets exploded and destroyed our own planes and pilots or maybe they destroyed the targe*
 
 ---
 
-# R Plots
+### Le *Statistical Research Group* (SRG)
 
+--
 
-```r
-par(mar = c(4, 4, 1, .1))
-plot(cars, pch = 19, col = 'darkgray', las = 1)
-abline(fit, lwd = 2)
-```
+- *SRG was composed of what surely must be the most extraordinary group of statisticians ever organized, taking into account both number and quality.* W. Allen Wallis
 
-![](index_files/figure-html/cars-1.svg)&lt;!-- --&gt;
+--
+
+- **Wilson Allen Wallis** (5 novembre 1912 - 12 octobre 1998), directeur du SRG, économiste et statisticien. Il a développé le test Kruskal-Wallis avec William Kruskal
+
+--
+
+- **Milton Friedman** (31 juillet 1912 - 16 novembre 2006), économiste. Prix Nobel d'économie en 1976 pour ses travaux sur l'analyse de la consommation, l'histoire monétaire et la démonstration de la complexité des politiques de stabilisation
+
+--
+
+- **George Stigler** (17 janvier 1911 - 1er décembre 1991), économiste. Prix Nobel d'économie en 1982 pour ses études fondatrices des structures industrielles, du fonctionnement des marchés, et des causes et effets de la régulation publique
+
+--
+
+- et j'en passe...
+
+---
+class: center, inverse, middle
+
+# Les mathématiques
+
+--
+
+## Les trous de balles manquants
 
 ---
 
-# Tables
+class: middle
 
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
+.center[
+&lt;img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%&gt;
+]
+
+---
+
+### Les trous de balles manquants
+
+**Question**: Vous ne voulez pas que vos avions soient abattus par des tirs ennemis, vous décidez donc de leur ajouter du blindage. Mais du blindage alourdit vos avions, les rend moins manoeuvrables et ceux-ci utilisent davantage de carburant.
+
+--
+
+- Mettre trop de blindage est un problème
+
+--
+
+- Ne pas mettre assez de blindage est un problème
+
+--
+
+### Que faire???
+
+---
+
+### Les trous de balles manquants
+
+.center[![avion troué](https://res.cloudinary.com/dzawgnnlr/image/upload/q_auto/f_auto/w_auto/bullet-riddled-plane.jpg)]
+
+Les avions revenaient du combat couverts de trous de balles, mais les trous n'étaient pas uniformément distribués sur tout l'avion.
+
+---
+
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Survivorship-bias.png/1024px-Survivorship-bias.png)
+background-size: cover
+
+---
+
+### Les trous de balles manquants
+
+Les officiers de l'armée y ont vu une opportunité d'efficacité.
+
+Obtenir la même protection avec moins de blindage, si on se concentre sur les endroits en ayant davantage besoin.
+
+Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties de l'avion.
+
+--
+
+#### **Question: Quelles sont les parties de l'avion nécessitant la plus grande quantité de blindage?**
+
+|            Section de l'avion           | Nombre de trous par pieds carrés |
+|-----------------------------------------|----------------------------------|
+| Moteur                                  | 1,11                             |
+| Fuselage (partie principale de l'avion) | 1,73                             |
+| Système de carburant                    | 1,55                             |
+| Reste de l'avion                        | 1,8                              |
+
+--
+
+### Vous pouvez voter à l'adresse: [http://bit.ly/TrousBalles](http://bit.ly/TrousBalles)
+
+---
+### Les résultats
+
+&lt;iframe seamless src="https://docs.google.com/spreadsheets/d/1tgbKRrHQnyDP2lvgH5iQhrxLG75C3TafKSjFwmVEqkM/htmlembed/sheet?gid=1284962309&amp;range=D2" width="800" height="500" frameborder="0" scrolling="no"&gt;&lt;/iframe&gt;
+
+---
+
+### Les trous de balles manquants
+
+Wald indiqua que le blindage ne devait pas aller aux endroits **où il avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
+
+--
+
+- Le raisonnement de Wald était le suivant: où sont les trous manquants?
+
+--
+
+- Les trous manquants sont sur les avions qui ne sont pas revenus.
+
+--
+
+- La raison pour laquelle les avions de retour avaient moins de trous dans la région des moteurs était que les avions ayant été touchés aux moteurs ne revenaient pas.
+
+--
+
+- Comment est-ce que Wald a pu voir ce que les officiers expérimentés de l'armée ne pouvaient pas voir?
+
+---
+
+### Les trous de balles manquants
+
+- Un statisticien se pose toujours la question suivante: Quelles sont les hypothèses que vous faites? Sont-elles justifiées?
+
+--
+
+- Les officiers de l'armée étaient sous l'impression que les avions qui revenaient formaient un échantillon aléatoire de tous les avions.
+
+--
+
+- Une fois que vous avez compris que c'est l'hypothèse sous laquelle vous travaillez, ça prend un petit moment pour comprendre que vous faites fausse route.
+
+---
+
+## Concernant Abraham Wald
+
+&gt; *The military was inclined to provide protection for those parts that on returning planes showed the most hits. Wald assumed, on good evidence, that hits in combat were uniformly distributed over the planes. It follows that hits on the more vulnerable parts were less likely to be found on returning planes than hits on the less vulnerable parts, since planes receiving hits on the more vulnerable parts were less likely to return to provide data. From these premises, he devised methods for estimating vulnerability of various parts.*
+
+---
+
+class: middle
+
+.center[
+&lt;img src="https://i.gifer.com/36jI.gif" width=90%&gt;
+]
 
 
-```r
-knitr::kable(head(iris), format = 'html')
-```
+---
+class: inverse, center middle
 
-&lt;table&gt;
+## Le biais du survivant
+
+--
+
+### Une forme de biais de sélection consistant à surévaluer les chances de succès d'une initiative en concentrant l'attention sur les sujets ayant réussi mais qui sont des exceptions statistiques (des « survivants ») plutôt que des cas représentatifs.
+
+---
+
+### Quelques exemples
+
+--
+
+- En finance, le biais du survivant survient lors de l'exclusion des entreprises ayant fait faillite des études de performance.
+
+--
+
+- En production industrielle, on entend souvent « les produits étaient mieux fabriqués avant ».
+
+--
+
+- En architecture et en construction, les bâtiments de plus de 100 ans encore debout.
+
+--
+
+- Dans les carrières hypercompétitives, commes les athlètes d'élite.
+
+--
+
+- Une étude réalisée en 1987 montre que les chats qui chutent d'une hauteur équivalente à moins de six étages et qui survivent ont des blessures plus graves que les chats tombant d'une hauteur plus élevée.
+
+???
+
+La situation pourrait cependant s'expliquer par un biais du survivant. Il est beaucoup moins probable que les chats qui meurent à la suite d'une chute soient emmenés chez le vétérinaire par rapport aux chats blessés par une chute. Les chats morts à la suite d'une chute de plus de six étages sont donc retirés des statistiques, ne laissant la place qu'aux chats « survivants ».
+
+WO Whitney et CJ Mehlhaff, *Journal of the American Veterinary Medical Association* **191**, 1 399-1 403, 1987
+
+---
+
+class: inverse, center, middle
+
+# La navette Challenger
+
+---
+
+background-image: url(https://natgeo.imgix.net/factsheets/thumbnails/ChallengerDisaster.jpg?auto=compress,format&amp;w=1024&amp;h=560&amp;fit=crop)
+background-size: cover
+
+---
+
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/3f/Challenger_flight_51-l_crew.jpg)
+background-size: cover
+
+???
+
+STS-51-L crew: (front row) Michael J. Smith, Dick Scobee, Ronald McNair; (back row) Ellison Onizuka, Christa McAuliffe, Gregory Jarvis, Judith Resnik
+
+---
+class:center, middle
+
+&lt;iframe width="700" height="394" src="https://www.youtube.com/embed/j4JOjcDFtBE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
+background-image: url(https://img2.thejournal.ie/inline/2573246/original/?width=630&amp;version=2573246)
+background-size: cover
+
+---
+
+# Challenger
+
+--
+
+- Le désastre de la navette Challenger s'est déroulé le 28 janvier 1986.
+
+--
+
+- La navette se brisa et se désintégra après 73 secondes de vol.
+
+--
+
+- L'accident choqua énormément la société américaine, en partie en raison de la présence de Christa McAuliffe, qui aurait été la première astronaute-enseignante.
+
+--
+
+- Une des conséquences de cet accident est la mise sur pied de la *Rogers Commission* (formé par Neil A. Armstrong et le prix Nobel Richard P. Feynman, entre autre).
+
+--
+
+- Cette commission conclut que la désintégration est causée par l'échec d'un joint d'étanchéité en raison des températures inhabituellements froides.
+
+--
+
+### Le problème des joints d'étanchéité était connu!
+
+---
+
+### Les données concernant les joints d'étanchéité
+
+
+
+&lt;div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:80%; overflow-x: scroll; width:100%; "&gt;&lt;table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; Sepal.Length &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Sepal.Width &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Petal.Length &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Petal.Width &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"&gt; Flight &lt;/th&gt;
+   &lt;th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"&gt; Date &lt;/th&gt;
+   &lt;th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"&gt; Temperature &lt;/th&gt;
+   &lt;th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"&gt; Erosion &lt;/th&gt;
+   &lt;th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"&gt; Blowby &lt;/th&gt;
+   &lt;th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"&gt; Total &lt;/th&gt;
+   &lt;th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"&gt; DamageIndex &lt;/th&gt;
+   &lt;th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"&gt; Comments &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 51-C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-01-24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 53 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Most erosion any flight; blow-by; back-up rings heated. &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 41-B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1984-02-03 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 57 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Deep, extensive erosion. &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 4.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 61-C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1986-01-12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; O-ring erosion on launch two weeks before Challenger. &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 4.6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 41-C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1984-04-06 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 63 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; O-rings showed signs of heating, but no damage. &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1981-04-12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 66 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Coolest (66 degrees) launch withouth O-rings problems. &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1983-04-04 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 51-A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1984-11-08 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 51-D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-04-12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1982-11-11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1982-03-22 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1981-11-12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Extent of erosion not fully known &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1983-11-28 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 41-D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1984-08-30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 51-G &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-06-17 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1983-06-18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 72 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1983-08-30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 73 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 51-B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-04-29 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 61-A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-10-30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; No erosion. Soot found behind two primary O-rings. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 51-I &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-08-27 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 76 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 61-B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-11-26 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 76 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 41-G &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1984-10-05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 51-J &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-10-03 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1982-06-27 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; O-ring condition unknown; rocket casing lost at sea. &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 51-F &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1985-07-29 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; None &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/table&gt;&lt;/div&gt;
 
 ---
 
-# HTML Widgets
-
-I have not thoroughly tested HTML widgets against **xaringan**. Some may work well, and some may not. It is a little tricky.
-
-Similarly, the Shiny mode (`runtime: shiny`) does not work. I might get these issues fixed in the future, but these are not of high priority to me. I never turn my presentation into a Shiny app. When I need to demonstrate more complicated examples, I just launch them separately. It is convenient to share slides with other people when they are plain HTML/JS applications.
-
-See the next page for two HTML widgets.
-
----
+### Les joints d'étanchéité
 
 
-```r
-library(leaflet)
-leaflet() %&gt;% addTiles() %&gt;% setView(-93.65, 42.0285, zoom = 17)
-```
 
-<div id="htmlwidget-008032606287284a1798" style="width:100%;height:432px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-008032606287284a1798">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[42.0285,-93.65],17,[]]},"evals":[],"jsHooks":[]}</script>
-
----
-
-
-```r
-DT::datatable(
-  head(iris, 10),
-  fillContainer = FALSE, options = list(pageLength = 8)
-)
-```
-
-<div id="htmlwidget-421062395d0f5eb70cf4" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-421062395d0f5eb70cf4">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
-
----
-
-# Some Tips
-
-- When you use the "Infinite Moon Reader" addin in RStudio, your R session will be blocked by default. You can click the red button on the right of the console to stop serving the slides, or use the _daemonized_ mode so that it does not block your R session. To do the latter, you can set the option
-
-    ```r
-    options(servr.daemon = TRUE)
-    ```
-    
-    in your current R session, or in `~/.Rprofile` so that it is applied to all future R sessions. I do the latter by myself.
-    
-    To know more about the web server, see the [**servr**](https://github.com/yihui/servr) package.
+La nuit avant le décollage, une téléconférence a eue lieu entre les ingénieurs, les directeurs de la NASA, pour discuter des effets des basses températures sur le décollage et les joints d'étanchéité.
 
 --
 
-- Do not forget to try the `yolo` option of `xaringan::moon_reader`.
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        yolo: true
-    ```
-
----
-
-# Some Tips
-
-- Slides can be automatically played if you set the `autoplay` option under `nature`, e.g. go to the next slide every 30 seconds in a lightning talk:
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          autoplay: 30000
-    ```
+&gt; *Temperature data [are] not conclusive on predicting primary O-ring blowby.*
 
 --
 
-- A countdown timer can be added to every page of the slides using the `countdown` option under `nature`, e.g. if you want to spend one minute on every page when you give the talk, you can set:
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          countdown: 60000
-    ```
+???
 
-    Then you will see a timer counting down from `01:00`, to `00:59`, `00:58`, ... When the time is out, the timer will continue but the time turns red.
-    
+La conclusion a été fortement influencée par la figure ci-dessous.
+
 ---
 
-# Some Tips
+### Les joints d'étanchéité
 
-- The title slide is created automatically by **xaringan**, but it is just another remark.js slide added before your other slides.
-
-    The title slide is set to `class: center, middle, inverse, title-slide` by default. You can change the classes applied to the title slide with the `titleSlideClass` option of `nature` (`title-slide` is always applied).
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          titleSlideClass: [top, left, inverse]
-    ```
-    
 --
 
-- If you'd like to create your own title slide, disable **xaringan**'s title slide with the `seal = FALSE` option of `moon_reader`.
+La commission Rogers trouva une grave erreur dans la figure précédente, **les vols sans aucuns incidents avaient été exclus** du graphique car *on croyait* que **ces vols ne contribuaient aucune information sur l'effet de la température**.
 
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        seal: false
-    ```
+--
 
----
+&gt; *A careful analysis of the flight history of O-ring performance would have revealed the correlation of O-ring damage in low temperature*
 
-# Some Tips
+--
 
-- There are several ways to build incremental slides. See [this presentation](https://slides.yihui.name/xaringan/incremental.html) for examples.
-
-- The option `highlightLines: true` of `nature` will highlight code lines that start with `*`, or are wrapped in `{{ }}`, or have trailing comments `#&lt;&lt;`;
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          highlightLines: true
-    ```
-
-    See examples on the next page.
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Some Tips
+### Une régression logistique
 
+&lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
-.pull-left[
-An example using a leading `*`:
+---
 
-    ```r
-    if (TRUE) {
-    ** message("Very important!")
-    }
-    ```
-Output:
-```r
-if (TRUE) {
-* message("Very important!")
-}
-```
+### Une régression logistique
 
-This is invalid R code, so it is a plain fenced code block that is not executed.
-]
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
-.pull-right[
-An example using `{{}}`:
+---
 
-````
-```{r tidy=FALSE}
-if (TRUE) {
-*{{ message("Very important!") }}
-}
-```
-````
-Output:
+### Une régression logistique
 
-```r
-if (TRUE) {
-* message("Very important!") 
-}
-```
+&lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
-```
-## Very important!
-```
+---
 
-It is valid R code so you can run it. Note that `{{}}` can wrap an R expression of multiple lines.
+class: middle
+
+.center[
+&lt;img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%&gt;
 ]
 
 ---
+class: center, inverse, middle
 
-# Some Tips
+# Les mathématiques
 
-An example of using the trailing comment `#&lt;&lt;` to highlight lines:
-
-````markdown
-```{r tidy=FALSE}
-library(ggplot2)
-ggplot(mtcars) + 
-  aes(mpg, disp) + 
-  geom_point() +   #&lt;&lt;
-  geom_smooth()    #&lt;&lt;
-```
-````
-
-Output:
-
-
-```r
-library(ggplot2)
-ggplot(mtcars) + 
-  aes(mpg, disp) + 
-* geom_point() +
-* geom_smooth()
-```
+### La vulnérabilité des avions
 
 ---
 
-# Some Tips
+### Quelques notations
 
-When you enable line-highlighting, you can also use the chunk option `highlight.output` to highlight specific lines of the text output from a code chunk. For example, `highlight.output = TRUE` means highlighting all lines, and `highlight.output = c(1, 3)` means highlighting the first and third line.
-
-````md
-```{r, highlight.output=c(1, 3)}
-head(iris)
-```
-````
-
-
-```
-*##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-*## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
-```
-
-Question: what does `highlight.output = c(TRUE, FALSE)` mean? (Hint: think about R's recycling of vectors)
+| Notation | Définition |
+|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `\(N\)` | le nombre d'avions au total |
+| `\(S\)` | le nombre d'avions survivants |
+| `\(D\)` | le nombre d'avions disparus |
+| `\(X_i\)` | le nombre d'avions ... touchés `\(i\)` fois |
+| `\(P_i\)` | la probabilité qu'un avion soit abattu par `\(i\)` coups au but |
+| `\(Q_i\)` | la probabilité de l'événement contraire |
+| `\(p_i\)` | la probabilité conditionnelle qu'un avion soit abattu par le `\(i\)`ème coup au but, étant donné que les premiers `\(i-1\)` coups ne l'ont pas abattu |
+| `\(q_i\)` | la probabilité de l'événement contraire |
 
 ---
 
-# Some Tips
+### Quelques résultats « évidents »
 
-- To make slides work offline, you need to download a copy of remark.js in advance, because **xaringan** uses the online version by default (see the help page `?xaringan::moon_reader`).
+--
 
-- You can use `xaringan::summon_remark()` to download the latest or a specified version of remark.js. By default, it is downloaded to `libs/remark-latest.min.js`.
+- Le nombre total d'avions envoyés au combat est égal à la somme des avions survivants et des avions disparus, c'est-à-dire que `\(N = S+D\)`.
 
-- Then change the `chakra` option in YAML to point to this file, e.g.
+--
 
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        chakra: libs/remark-latest.min.js
-    ```
+- De façon similaire, en étudiant les avions touchés au but `\(i\)` fois, nous avons `\(N_i = S_i+D_i\)`.
 
-- If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
+--
 
----
+- La probabilité qu'un avion ne soit pas abattu par `\(i\)` coups au but est en fait la probabilité de ne pas être abattu par 1 coup (en ayant survécu aux coups précédents) et de ne pas être abattu par 2 coups (en ayant survécu aux coups précédents), ... et de ne pas être abattu par `\(i\)` coups (en ayant survécu aux coups précédents). Nous avons donc `\(Q_i = q_1 q_2 \ldots q_i\)`.
 
-# Macros
+--
 
-- remark.js [allows users to define custom macros](https://github.com/yihui/xaringan/issues/80) (JS functions) that can be applied to Markdown text using the syntax `![:macroName arg1, arg2, ...]` or `![:macroName arg1, arg2, ...](this)`. For example, before remark.js initializes the slides, you can define a macro named `scale`:
-
-    ```js
-    remark.macros.scale = function (percentage) {
-      var url = this;
-      return '&lt;img src="' + url + '" style="width: ' + percentage + '" /&gt;';
-    };
-    ```
-
-    Then the Markdown text
-
-    ```markdown
-    ![:scale 50%](image.jpg)
-    ```
-
-    will be translated to
-    
-    ```html
-    &lt;img src="image.jpg" style="width: 50%" /&gt;
-    ```
+- La probabilité d'être abattu par `\(i\)` coups au but est donc `\(P_i = 1-Q_i = 1 - q_1 q_2 \ldots q_i\)`.
 
 ---
 
-# Macros (continued)
+### Les hypothèses
 
-- To insert macros in **xaringan** slides, you can use the option `beforeInit` under the option `nature`, e.g.,
+- Nous connaissons `\(N\)`.
 
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          beforeInit: "macros.js"
-    ```
+- Nous connaissons pour tout `\(i\)` ( `\(i=0,1,2,\ldots\)` ) les nombres `\(S_i\)`.
 
-    You save your remark.js macros in the file `macros.js`.
+- Nous supposons que tous les avions disparus le sont en raison de tirs ennemis et donc `\(D_0=0\)`. Ceci implique que nous supposons qu'aucun avion ne peut être porté disparu en raison de problèmes mécaniques.
 
-- The `beforeInit` option can be used to insert arbitrary JS code before `remark.create()`. Inserting macros is just one of its possible applications.
+- Le nombre de tirs sur un avion est borné, c'est-à-dire que `\(D_j=0\)` pour `\(j\)` plus grand qu'un certain entier `\(m\)`.
+
+- Pour simplifier la notation, nous écrirons `\(N_{j\geq i}\)` pour signifier `\(\sum\limits_{j\geq i}N_j\)`.
 
 ---
 
-# CSS
+Rappelons que `\(p_i\)` représente la probabilité conditionnelle qu'un avion soit abattu par le `\(i\)`ème coup au but, étant donné que les premiers `\(i-1\)` coups ne l'ont pas abattu. Nous pouvons donc écrire `\(p_i=\frac{D_i}{N_{j\geq i}}\)`. 
 
-Among all options in `xaringan::moon_reader`, the most challenging but perhaps also the most rewarding one is `css`, because it allows you to customize the appearance of your slides using any CSS rules or hacks you know.
+Nous avons donc:
 
-You can see the default CSS file [here](https://github.com/yihui/xaringan/blob/master/inst/rmarkdown/templates/xaringan/resources/default.css). You can completely replace it with your own CSS files, or define new rules to override the default. See the help page `?xaringan::moon_reader` for more information.
+`$$\begin{eqnarray*} 
+D_i &amp;=&amp; p_i \left( N_{j\geq i} \right) \\
+&amp;=&amp; p_i \left( N - N_{j&lt; i} \right) \\
+&amp;=&amp; p_i \left( N - S_{j&lt; i} - D_{j&lt; i} \right)
+\end{eqnarray*}$$`
 
----
+L'idée géniale de Wald est de se rendre compte que nous pouvons résoudre l'équation précédente par induction sur `\(i\)` car nous savons que `\(D_0=0\)`. Ainsi:
 
-# CSS
-
-For example, suppose you want to change the font for code from the default "Source Code Pro" to "Ubuntu Mono". You can create a CSS file named, say, `ubuntu-mono.css`:
-
-```css
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-```
-
-Then set the `css` option in the YAML metadata:
-
-```yaml
-output:
-  xaringan::moon_reader:
-    css: ["default", "ubuntu-mono.css"]
-```
-
-Here I assume `ubuntu-mono.css` is under the same directory as your Rmd.
-
-See [yihui/xaringan#83](https://github.com/yihui/xaringan/issues/83) for an example of using the [Fira Code](https://github.com/tonsky/FiraCode) font, which supports ligatures in program code.
+`$$\begin{eqnarray*} 
+D_0 &amp;=&amp; 0 \\
+D_1 &amp;=&amp; p_1 \left( N - S_{j&lt; 1} - D_{j&lt; 1} \right) \\
+&amp;=&amp; p_1 \left( N - S_{0} \right) \\
+D_2 &amp;=&amp; p_2 \left( N - S_{j&lt; 2} - D_{j&lt; 2} \right) \\
+&amp;=&amp; p_2 \left( N - S_0 - S_1 - D_1 \right) \\
+&amp; \ldots &amp;
+\end{eqnarray*}$$`
 
 ---
 
-# Themes
+### Comment trouver les `\(p_i\)`?
 
-Don't want to learn CSS? Okay, you can use some user-contributed themes. A theme typically consists of two CSS files `foo.css` and `foo-fonts.css`, where `foo` is the theme name. Below are some existing themes:
+L'équation précédente nous ramène maintenant à la question de trouver les valeurs des `\(p_i\)`. 
 
+En vérité, il n'est pas possible de les trouver, mais Wald parvient à trouver divers estimés.
 
-```r
-names(xaringan:::list_css())
-```
+Pour ce faire, il utilise l'équation suivante:
 
-```
-##  [1] "chocolate-fonts"  "chocolate"        "default-fonts"   
-##  [4] "default"          "duke-blue"        "fc-fonts"        
-##  [7] "fc"               "hygge-duke"       "hygge"           
-## [10] "kunoichi"         "lucy-fonts"       "lucy"            
-## [13] "metropolis-fonts" "metropolis"       "middlebury-fonts"
-## [16] "middlebury"       "ninjutsu"         "rladies-fonts"   
-## [19] "rladies"          "robot-fonts"      "robot"           
-## [22] "rutgers-fonts"    "rutgers"          "shinobi"         
-## [25] "tamu-fonts"       "tamu"             "uo-fonts"        
-## [28] "uo"               "uol-fonts"        "uol"
-```
+$$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
 
 ---
 
-# Themes
+### De fausses munitions...
 
-To use a theme, you can specify the `css` option as an array of CSS filenames (without the `.css` extensions), e.g.,
+Posons `\(F_i\)` le nombre d'avions ayant été touchés `\(i\)` fois par de fausses munitions.
 
-```yaml
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts]
-```
+Nous avons `\(F_i \geq S_i\)`.
 
-If you want to contribute a theme to **xaringan**, please read [this blog post](https://yihui.name/en/2017/10/xaringan-themes).
+Posons `\(Y_i = F_i - S_i\)`.
 
----
-class: inverse, middle, center
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
-background-size: contain
-
-# Naruto
-
----
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
-background-size: 100px
-background-position: 90% 8%
-
-# Sharingan
-
-The R package name **xaringan** was derived&lt;sup&gt;1&lt;/sup&gt; from **Sharingan**, a dōjutsu in the Japanese anime _Naruto_ with two abilities:
-
-- the "Eye of Insight"
-
-- the "Eye of Hypnotism"
-
-I think a presentation is basically a way to communicate insights to the audience, and a great presentation may even "hypnotize" the audience.&lt;sup&gt;2,3&lt;/sup&gt;
-
-.footnote[
-[1] In Chinese, the pronounciation of _X_ is _Sh_ /ʃ/ (as in _shrimp_). Now you should have a better idea of how to pronounce my last name _Xie_.
-
-[2] By comparison, bad presentations only put the audience to sleep.
-
-[3] Personally I find that setting background images for slides is a killer feature of remark.js. It is an effective way to bring visual impact into your presentations.
-]
+Nous avons `\(F_0 = S_0\)` ce qui implique que `\(Y_0=0\)` et `\(\sum_{j=0}^n F_i = N\)`.
 
 ---
 
-# Naruto terminology
+### De fausses munitions...
 
-The **xaringan** package borrowed a few terms from Naruto, such as
+Nous avons:
 
-- [Sharingan](http://naruto.wikia.com/wiki/Sharingan) (写輪眼; the package name)
-
-- The [moon reader](http://naruto.wikia.com/wiki/Moon_Reader) (月読; an attractive R Markdown output format)
-
-- [Chakra](http://naruto.wikia.com/wiki/Chakra) (查克拉; the path to the remark.js library, which is the power to drive the presentation)
-
-- [Nature transformation](http://naruto.wikia.com/wiki/Nature_Transformation) (性質変化; transform the chakra by setting different options)
-
-- The [infinite moon reader](http://naruto.wikia.com/wiki/Infinite_Tsukuyomi) (無限月読; start a local web server to continuously serve your slides)
-
-- The [summoning technique](http://naruto.wikia.com/wiki/Summoning_Technique) (download remark.js from the web)
-
-You can click the links to know more about them if you want. The jutsu "Moon Reader" may seem a little evil, but that does not mean your slides are evil.
+`$$\begin{eqnarray*} 
+Y_i &amp;=&amp; P_i F_i = P_i(S_i+Y_i) \quad \text{(pour } i=1,2,\ldots, n) \\
+(1-P_i)Y_i &amp;=&amp; P_i S_i \\
+Y_i &amp;=&amp; \frac{P_i}{Q_i} S_i \\
+&amp;=&amp; \frac{1-q_1q_2\ldots q_i}{q_1q_2\ldots q_i} S_i \\
+&amp;=&amp; \frac{S_i}{q_1q_2\ldots q_i} - S_i
+\end{eqnarray*}$$`
 
 ---
 
-class: center
+### De fausses munitions...
 
-# Hand seals (印)
+Et donc:
 
-Press `h` or `?` to see the possible ninjutsu you can use in remark.js.
+`$$\begin{eqnarray*} 
+\sum_{j=1}^m Y_j &amp;=&amp; \sum_{j=1}^m \frac{S_j}{q_1q_2\ldots q_j} - \sum_{j=1}^m S_j \\
+\sum_{j=1}^m \frac{S_j}{q_1q_2\ldots q_j} &amp;=&amp; \sum_{j=1}^m (Y_j+S_j) \\
+&amp;=&amp; \sum_{j=1}^m F_j \\
+&amp;=&amp; N-S_0
+\end{eqnarray*}$$`
 
-![](https://upload.wikimedia.org/wikipedia/commons/7/7e/Mudra-Naruto-KageBunshin.svg)
 
 ---
 
-class: center, middle
+### Un exemple
 
-# Thanks!
+Supposons que `\(N=400\)` avions ont été envoyés en mission. Le nombre d'avion survivants est:
 
-Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+`$$\begin{eqnarray*} 
+S_0 &amp;=&amp; 320 \\
+S_1 &amp;=&amp; 32 \\
+S_2 &amp;=&amp; 20 \\
+S_3 &amp;=&amp; 4 \\
+S_4 &amp;=&amp; 2 \\
+S_5 &amp;=&amp; 2
+\end{eqnarray*}$$`
 
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+Il semble raisonnable de supposer que les tirs ennemis diminuent les chances pour un avion de survivre, ce qui implique que:
+
+`$$q_1 \geq q_2 \geq \ldots$$`
+
+Pour simplifier le problème, nous allons supposer que tous les `\(q_i\)` sont égaux.
+
+---
+
+### Un exemple
+
+Nous avons donc:
+
+`$$\frac{S_1}{q}+\frac{S_2}{q^2}+\frac{S_3}{q^3}+\frac{S_4}{q^4}+\frac{S_5}{q^5}=N-S_0$$`
+
+En utilisant nos données nous avons:
+
+`$$\frac{32}{q}+\frac{20}{q^2}+\frac{4}{q^3}+\frac{2}{q^4}+\frac{2}{q^5}=80$$`
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

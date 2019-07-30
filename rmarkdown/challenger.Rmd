@@ -1,0 +1,99 @@
+---
+title: "Challenger"
+author: "Marc-André Désautels"
+date: "16/04/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+## Challenger
+
+Document `R Markdown` contenant le code `R` pour visualiser les données des joints d'étanchéité de la navette *Challenger*. Sera utilisé dans ma présentation `Xaringan`.
+
+### Données
+
+```{r}
+nasa <- tibble(
+  Flight =c("51-C","41-B","61-C","41-C","1","6","51-A","51-D","5","3","2","9","41-D","51-G","7","8","51-B","61-A","51-I","61-B","41-G","51-J",NA,"51-F"),
+  Date = c("1985-01-24","1984-02-03","1986-01-12","1984-04-06","1981-04-12","1983-04-04","1984-11-08","1985-04-12","1982-11-11","1982-03-22","1981-11-12","1983-11-28","1984-08-30","1985-06-17","1983-06-18","1983-08-30","1985-04-29","1985-10-30","1985-08-27","1985-11-26","1984-10-05","1985-10-03","1982-06-27","1985-07-29"),
+  Temperature = c(53,57,58,63,66,67,67,67,68,69,70,70,70,70,72,73,75,75,76,76,78,79,80,81),
+  Erosion = c(2,1,1,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0),
+  Blowby = c(2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0),
+  Total = 6,
+  DamageIndex = c(11,4,4,2,0,0,0,0,0,0,4,0,4,0,0,0,0,4,0,0,0,0,NA,0),
+  Comments = c("Most erosion any flight; blow-by; back-up rings heated.",
+               "Deep, extensive erosion.",
+               "O-ring erosion on launch two weeks before Challenger.",
+               "O-rings showed signs of heating, but no damage.",
+               "Coolest (66 degrees) launch withouth O-rings problems.",
+               "None","None","None","None","None",
+               "Extent of erosion not fully known",
+               "None","None","None","None","None","None",
+               "No erosion. Soot found behind two primary O-rings.",
+               "None","None","None","None",
+               "O-ring condition unknown; rocket casing lost at sea.",
+               "None")
+)
+nasa <- nasa %>% 
+  mutate(
+    ErosionOrBlowby = if_else(Erosion >= Blowby, Erosion, Blowby),
+    Incident = if_else(DamageIndex > 0, 1, 0),
+    Celsius = (Temperature-32)*5/9,
+    NumberJoints = 6
+  )
+```
+
+### Graphiques
+
+#### Seulement les vols avec incidents
+
+```{r}
+nasa %>% 
+  filter(!is.na(DamageIndex) & DamageIndex > 0) %>% 
+  ggplot(aes(x = Celsius, y = ErosionOrBlowby)) +
+  geom_jitter(width = 0, height = 0.1) +
+  scale_x_continuous(name = "Température", limits = c(-5,30), breaks = seq(-5,30,5))  +
+  scale_y_continuous(name = "Nombre d'incidents", limits = c(-0.5,2.5), breaks = seq(0,2,1))
+```
+
+#### Tous les vols
+
+```{r}
+nasa %>% 
+  filter(!is.na(DamageIndex) & DamageIndex >= 0) %>% 
+  ggplot(aes(x = Celsius, y = ErosionOrBlowby)) +
+  geom_jitter(width = 0, height = 0.1) +
+  scale_x_continuous(name = "Température", limits = c(-5,30), breaks = seq(-5,30,5))  +
+  scale_y_continuous(name = "Nombre d'incidents", limits = c(-0.5,2.5), breaks = seq(0,2,1))
+```
+
+
+
+```{r}
+nasa %>% 
+  filter(!is.na(DamageIndex) & DamageIndex >= 0) %>% 
+  ggplot(aes(x = Celsius, y = ErosionOrBlowby/NumberJoints)) +
+  geom_point() +
+  geom_smooth(method = "glm", method.args = list(family=binomial), aes(weight = NumberJoints), fullrange=TRUE, se=FALSE)+
+  scale_x_continuous(name = "Température", limits = c(-5,30), breaks = seq(-5,30,5))  +
+  scale_y_continuous(name = "Probabilité d'incident", limits = c(0,1), breaks = seq(0,1,0.2)) +
+  geom_vline(xintercept = (26-32)*5/9, color = "red", size = 1) +
+  geom_vline(xintercept = (29-32)*5/9, color = "red", size = 1) +
+  geom_text(x = 1, y = 0, label = "Challenger", color = "red")
+```
+
+
+### Régression logistique
+
+```{r}
+chall.glm <- glm(ErosionOrBlowby/NumberJoints ~ Celsius, data=nasa, family=binomial, weights = NumberJoints)
+summary(chall.glm)
+coef(chall.glm)
+fun.1 <- function(x) 6/(1+exp(-coef(chall.glm)[1]-coef(chall.glm)[2]*x))
+```
+
