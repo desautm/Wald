@@ -4,7 +4,7 @@
     <title>Abraham Wald et les trous de balles manquants.</title>
     <meta charset="utf-8" />
     <meta name="author" content="Marc-André Désautels" />
-    <meta name="date" content="2019-04-25" />
+    <meta name="date" content="2019-07-16" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint/kePrint.js"></script>
@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # Abraham Wald et les trous de balles manquants.
 ## encore une présentation sur la Seconde Guerre Mondiale…
 ### Marc-André Désautels
-### 2019-04-25
+### 2019-07-16
 
 ---
 
@@ -147,8 +147,132 @@ class: center, inverse, middle
 
 # Les mathématiques
 
+--
+
+## Les trous de balles manquants
+
 ---
-class: center middle
+
+class: middle
+
+.center[
+&lt;img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%&gt;
+]
+
+---
+
+### Les trous de balles manquants
+
+**Question**: Vous ne voulez pas que vos avions soient abattus par des tirs ennemis, vous décidez donc de leur ajouter du blindage. Mais du blindage alourdit vos avions, les rend moins manoeuvrables et ceux-ci utilisent davantage de carburant.
+
+--
+
+- Mettre trop de blindage est un problème
+
+--
+
+- Ne pas mettre assez de blindage est un problème
+
+--
+
+### Que faire???
+
+---
+
+### Les trous de balles manquants
+
+.center[![avion troué](https://res.cloudinary.com/dzawgnnlr/image/upload/q_auto/f_auto/w_auto/bullet-riddled-plane.jpg)]
+
+Les avions revenaient du combat couverts de trous de balles, mais les trous n'étaient pas uniformément distribués sur tout l'avion.
+
+---
+
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Survivorship-bias.png/1024px-Survivorship-bias.png)
+background-size: cover
+
+---
+
+### Les trous de balles manquants
+
+Les officiers de l'armée y ont vu une opportunité d'efficacité.
+
+Obtenir la même protection avec moins de blindage, si on se concentre sur les endroits en ayant davantage besoin.
+
+Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties de l'avion.
+
+--
+
+#### **Question: Quelles sont les parties de l'avion nécessitant la plus grande quantité de blindage?**
+
+|            Section de l'avion           | Nombre de trous par pieds carrés |
+|-----------------------------------------|----------------------------------|
+| Moteur                                  | 1,11                             |
+| Fuselage (partie principale de l'avion) | 1,73                             |
+| Système de carburant                    | 1,55                             |
+| Reste de l'avion                        | 1,8                              |
+
+--
+
+### Vous pouvez voter à l'adresse: [http://bit.ly/TrousBalles](http://bit.ly/TrousBalles)
+
+---
+### Les résultats
+
+&lt;iframe seamless src="https://docs.google.com/spreadsheets/d/1tgbKRrHQnyDP2lvgH5iQhrxLG75C3TafKSjFwmVEqkM/htmlembed/sheet?gid=1284962309&amp;range=D2" width="800" height="500" frameborder="0" scrolling="no"&gt;&lt;/iframe&gt;
+
+---
+
+### Les trous de balles manquants
+
+Wald indiqua que le blindage ne devait pas aller aux endroits **où il avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
+
+--
+
+- Le raisonnement de Wald était le suivant: où sont les trous manquants?
+
+--
+
+- Les trous manquants sont sur les avions qui ne sont pas revenus.
+
+--
+
+- La raison pour laquelle les avions de retour avaient moins de trous dans la région des moteurs était que les avions ayant été touchés aux moteurs ne revenaient pas.
+
+--
+
+- Comment est-ce que Wald a pu voir ce que les officiers expérimentés de l'armée ne pouvaient pas voir?
+
+---
+
+### Les trous de balles manquants
+
+- Un statisticien se pose toujours la question suivante: Quelles sont les hypothèses que vous faites? Sont-elles justifiées?
+
+--
+
+- Les officiers de l'armée étaient sous l'impression que les avions qui revenaient formaient un échantillon aléatoire de tous les avions.
+
+--
+
+- Une fois que vous avez compris que c'est l'hypothèse sous laquelle vous travaillez, ça prend un petit moment pour comprendre que vous faites fausse route.
+
+---
+
+## Concernant Abraham Wald
+
+&gt; *The military was inclined to provide protection for those parts that on returning planes showed the most hits. Wald assumed, on good evidence, that hits in combat were uniformly distributed over the planes. It follows that hits on the more vulnerable parts were less likely to be found on returning planes than hits on the less vulnerable parts, since planes receiving hits on the more vulnerable parts were less likely to return to provide data. From these premises, he devised methods for estimating vulnerability of various parts.*
+
+---
+
+class: middle
+
+.center[
+&lt;img src="https://i.gifer.com/36jI.gif" width=90%&gt;
+]
+
+
+---
+class: inverse, center middle
 
 ## Le biais du survivant
 
@@ -205,6 +329,11 @@ background-size: cover
 ???
 
 STS-51-L crew: (front row) Michael J. Smith, Dick Scobee, Ronald McNair; (back row) Ellison Onizuka, Christa McAuliffe, Gregory Jarvis, Judith Resnik
+
+---
+class:center, middle
+
+&lt;iframe width="700" height="394" src="https://www.youtube.com/embed/j4JOjcDFtBE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 ---
 
@@ -557,122 +686,6 @@ La commission Rogers trouva une grave erreur dans la figure précédente, **les 
 &lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
 ---
-class: inverse, center, middle
-
-## Les trous de balles manquants
-
----
-
-class: middle
-
-.center[
-&lt;img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%&gt;
-]
-
----
-
-### Les trous de balles manquants
-
-**Question**: Vous ne voulez pas que vos avions soient abattus par des tirs ennemis, vous décidez donc de leur ajouter du blindage. Mais du blindage alourdit vos avions, les rend moins manoeuvrables et ceux-ci utilisent davantage de carburant. 
-
-- Mettre trop de blindage est un problème
-
-- Ne pas mettre assez de blindage est un problème
-
-### Que faire???
-
----
-
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Survivorship-bias.png/1024px-Survivorship-bias.png)
-background-size: cover
-
----
-
-### Les trous de balles manquants
-
-.center[![avion troué](https://res.cloudinary.com/dzawgnnlr/image/upload/q_auto/f_auto/w_auto/bullet-riddled-plane.jpg)]
-
-Les avions revenaient du combat couverts de trous de balles, mais les trous n'étaient pas uniformément distribués sur tout l'avion.
-
----
-
-### Les trous de balles manquants
-
-Les officiers de l'armée y ont vu une opportunité d'efficacité.
-
-Obtenir la même protection avec moins de blindage, si on se concentre sur les endroits en ayant davantage besoin.
-
-Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties de l'avion.
-
-#### **Question: Quelles sont les parties de l'avion nécessitant la plus grande quantité de blindage?**
-
-|            Section de l'avion           | Nombre de trous par pieds carrés |
-|-----------------------------------------|----------------------------------|
-| Moteur                                  | 1,11                             |
-| Fuselage (partie principale de l'avion) | 1,73                             |
-| Système de carburant                    | 1,55                             |
-| Reste de l'avion                        | 1,8                              |
-
---
-
-### Vous pouvez voter à l'adresse: [http://bit.ly/TrousBalles](http://bit.ly/TrousBalles)
-
----
-### Les résultats
-
-&lt;iframe seamless src="https://docs.google.com/spreadsheets/d/1tgbKRrHQnyDP2lvgH5iQhrxLG75C3TafKSjFwmVEqkM/htmlembed/sheet?gid=1284962309&amp;range=D2" width="800" height="500" frameborder="0" scrolling="no"&gt;&lt;/iframe&gt;
-
----
-
-### Les trous de balles manquants
-
-Wald indiqua que le blindage ne devait pas aller aux endroits **où il avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
-
---
-
-- Le raisonnement de Wald était le suivant: où sont les trous manquants?
-
---
-
-- Les trous manquants sont sur les avions qui ne sont pas revenus.
-
---
-
-- La raison pour laquelle les avions de retour avaient moins de trous dans la région des moteurs était que les avions ayant été touchés aux moteurs ne revenaient pas.
-
---
-
-- Comment est-ce que Wald a pu voir ce que les officiers expérimentés de l'armée ne pouvaient pas voir?
-
----
-
-### Les trous de balles manquants
-
-- Un statisticien se pose toujours la question suivante: Quelles sont les hypothèses que vous faites? Sont-elles justifiées?
-
---
-
-- Les officiers de l'armée étaient sous l'impression que les avions qui revenaient formaient un échantillon aléatoire de tous les avions.
-
---
-
-- Une fois que vous avez compris que c'est l'hypothèse sous laquelle vous travaillez, ça prend un petit moment pour comprendre que vous faites fausse route.
-
----
-
-## Concernant Abraham Wald
-
-&gt; *The military was inclined to provide protection for those parts that on returning planes showed the most hits. Wald assumed, on good evidence, that hits in combat were uniformly distributed over the planes. It follows that hits on the more vulnerable parts were less likely to be found on returning planes than hits on the less vulnerable parts, since planes receiving hits on the more vulnerable parts were less likely to return to provide data. From these premises, he devised methods for estimating vulnerability of various parts.*
-
----
-
-class: middle
-
-.center[
-&lt;img src="https://i.gifer.com/36jI.gif" width=90%&gt;
-]
-
----
 
 class: middle
 
@@ -691,25 +704,16 @@ class: center, inverse, middle
 
 ### Quelques notations
 
-`\(N\)` : le nombre d'avions au total.
-
-`\(N_i\)` : le nombre d'avions au total touchés `\(i\)` fois.
-
-`\(S\)` : le nombre d'avions survivants.
-
-`\(S_i\)` : le nombre d'avions survivants touchés `\(i\)` fois.
-
-`\(D\)` : le nombre d'avions disparus.
-
-`\(D_i\)` : le nombre d'avions disparus touchés `\(i\)` fois.
-
-`\(P_i\)` : la probabilité qu'un avion soit abattu par `\(i\)` coups au but.
-
-`\(Q_i=1-P_i\)` : la probabilité de l'événement contraire.
-
-`\(p_i\)` : la probabilité conditionnelle qu'un avion soit abattu par le `\(i\)`ème coup au but, étant donné que les premiers `\(i-1\)` coups ne l'ont pas abattu.
-
-`\(q_i=1-p_i\)` : la probabilité de l'événement contraire.
+| Notation | Définition |
+|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `\(N\)` | le nombre d'avions au total |
+| `\(S\)` | le nombre d'avions survivants |
+| `\(D\)` | le nombre d'avions disparus |
+| `\(X_i\)` | le nombre d'avions ... touchés `\(i\)` fois |
+| `\(P_i\)` | la probabilité qu'un avion soit abattu par `\(i\)` coups au but |
+| `\(Q_i\)` | la probabilité de l'événement contraire |
+| `\(p_i\)` | la probabilité conditionnelle qu'un avion soit abattu par le `\(i\)`ème coup au but, étant donné que les premiers `\(i-1\)` coups ne l'ont pas abattu |
+| `\(q_i\)` | la probabilité de l'événement contraire |
 
 ---
 
@@ -717,7 +721,7 @@ class: center, inverse, middle
 
 --
 
-- Le nombre total d'avions envoyés au combat est égal à la somme des avions survivants et des avions disparus, c'est-à-dire que `\(N = S+D\)`. Nous utiliserons habituellement `\(D = N - S\)`.
+- Le nombre total d'avions envoyés au combat est égal à la somme des avions survivants et des avions disparus, c'est-à-dire que `\(N = S+D\)`.
 
 --
 
@@ -779,6 +783,79 @@ En vérité, il n'est pas possible de les trouver, mais Wald parvient à trouver
 Pour ce faire, il utilise l'équation suivante:
 
 $$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
+
+---
+
+### De fausses munitions...
+
+Posons `\(F_i\)` le nombre d'avions ayant été touchés `\(i\)` fois par de fausses munitions.
+
+Nous avons `\(F_i \geq S_i\)`.
+
+Posons `\(Y_i = F_i - S_i\)`.
+
+Nous avons `\(F_0 = S_0\)` ce qui implique que `\(Y_0=0\)` et `\(\sum_{j=0}^n F_i = N\)`.
+
+---
+
+### De fausses munitions...
+
+Nous avons:
+
+`$$\begin{eqnarray*} 
+Y_i &amp;=&amp; P_i F_i = P_i(S_i+Y_i) \quad \text{(pour } i=1,2,\ldots, n) \\
+(1-P_i)Y_i &amp;=&amp; P_i S_i \\
+Y_i &amp;=&amp; \frac{P_i}{Q_i} S_i \\
+&amp;=&amp; \frac{1-q_1q_2\ldots q_i}{q_1q_2\ldots q_i} S_i \\
+&amp;=&amp; \frac{S_i}{q_1q_2\ldots q_i} - S_i
+\end{eqnarray*}$$`
+
+---
+
+### De fausses munitions...
+
+Et donc:
+
+`$$\begin{eqnarray*} 
+\sum_{j=1}^m Y_j &amp;=&amp; \sum_{j=1}^m \frac{S_j}{q_1q_2\ldots q_j} - \sum_{j=1}^m S_j \\
+\sum_{j=1}^m \frac{S_j}{q_1q_2\ldots q_j} &amp;=&amp; \sum_{j=1}^m (Y_j+S_j) \\
+&amp;=&amp; \sum_{j=1}^m F_j \\
+&amp;=&amp; N-S_0
+\end{eqnarray*}$$`
+
+
+---
+
+### Un exemple
+
+Supposons que `\(N=400\)` avions ont été envoyés en mission. Le nombre d'avion survivants est:
+
+`$$\begin{eqnarray*} 
+S_0 &amp;=&amp; 320 \\
+S_1 &amp;=&amp; 32 \\
+S_2 &amp;=&amp; 20 \\
+S_3 &amp;=&amp; 4 \\
+S_4 &amp;=&amp; 2 \\
+S_5 &amp;=&amp; 2
+\end{eqnarray*}$$`
+
+Il semble raisonnable de supposer que les tirs ennemis diminuent les chances pour un avion de survivre, ce qui implique que:
+
+`$$q_1 \geq q_2 \geq \ldots$$`
+
+Pour simplifier le problème, nous allons supposer que tous les `\(q_i\)` sont égaux.
+
+---
+
+### Un exemple
+
+Nous avons donc:
+
+`$$\frac{S_1}{q}+\frac{S_2}{q^2}+\frac{S_3}{q^3}+\frac{S_4}{q^4}+\frac{S_5}{q^5}=N-S_0$$`
+
+En utilisant nos données nous avons:
+
+`$$\frac{32}{q}+\frac{20}{q^2}+\frac{4}{q^3}+\frac{2}{q^4}+\frac{2}{q^5}=80$$`
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

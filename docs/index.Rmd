@@ -113,7 +113,7 @@ class: center, inverse, middle
 
 --
 
-- *Navy planes launched rockets whose propellants had been accepted by Abe Girshick's sampling-inspection plans, and maybe the rockets exploded and destroyed our own planes and pilots or maybe they destroyed the targe*
+- *Navy planes launched rockets whose propellants had been accepted by Abe Girshick's sampling-inspection plans, and maybe the rockets exploded and destroyed our own planes and pilots or maybe they destroyed the target*
 
 ---
 
@@ -328,6 +328,11 @@ background-size: cover
 STS-51-L crew: (front row) Michael J. Smith, Dick Scobee, Ronald McNair; (back row) Ellison Onizuka, Christa McAuliffe, Gregory Jarvis, Judith Resnik
 
 ---
+class:center, middle
+
+<iframe width="700" height="394" src="https://www.youtube.com/embed/j4JOjcDFtBE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
 
 background-image: url(https://img2.thejournal.ie/inline/2573246/original/?width=630&version=2573246)
 background-size: cover
@@ -513,25 +518,16 @@ class: center, inverse, middle
 
 ### Quelques notations
 
-$N$ : le nombre d'avions au total.
-
-$N_i$ : le nombre d'avions au total touchés $i$ fois.
-
-$S$ : le nombre d'avions survivants.
-
-$S_i$ : le nombre d'avions survivants touchés $i$ fois.
-
-$D$ : le nombre d'avions disparus.
-
-$D_i$ : le nombre d'avions disparus touchés $i$ fois.
-
-$P_i$ : la probabilité qu'un avion soit abattu par $i$ coups au but.
-
-$Q_i=1-P_i$ : la probabilité de l'événement contraire.
-
-$p_i$ : la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu.
-
-$q_i=1-p_i$ : la probabilité de l'événement contraire.
+| Notation | Définition |
+|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+| $N$ | le nombre d'avions au total |
+| $S$ | le nombre d'avions survivants |
+| $D$ | le nombre d'avions disparus |
+| $X_i$ | le nombre d'avions ... touchés $i$ fois |
+| $P_i$ | la probabilité qu'un avion soit abattu par $i$ coups au but |
+| $Q_i$ | la probabilité de l'événement contraire |
+| $p_i$ | la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu |
+| $q_i$ | la probabilité de l'événement contraire |
 
 ---
 
@@ -539,7 +535,7 @@ $q_i=1-p_i$ : la probabilité de l'événement contraire.
 
 --
 
-- Le nombre total d'avions envoyés au combat est égal à la somme des avions survivants et des avions disparus, c'est-à-dire que $N = S+D$. Nous utiliserons habituellement $D = N - S$.
+- Le nombre total d'avions envoyés au combat est égal à la somme des avions survivants et des avions disparus, c'est-à-dire que $N = S+D$.
 
 --
 
@@ -601,3 +597,79 @@ En vérité, il n'est pas possible de les trouver, mais Wald parvient à trouver
 Pour ce faire, il utilise l'équation suivante:
 
 $$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
+
+---
+
+### De fausses munitions...
+
+Posons $F_i$ le nombre d'avions ayant été touchés $i$ fois par de fausses munitions.
+
+Nous avons $F_i \geq S_i$.
+
+Posons $Y_i = F_i - S_i$.
+
+Nous avons $F_0 = S_0$ ce qui implique que $Y_0=0$ et $\sum_{j=0}^n F_i = N$.
+
+---
+
+### De fausses munitions...
+
+Nous avons:
+
+$$\begin{eqnarray*} 
+Y_i &=& P_i F_i = P_i(S_i+Y_i) \quad \text{(pour } i=1,2,\ldots, n) \\
+(1-P_i)Y_i &=& P_i S_i \\
+Y_i &=& \frac{P_i}{Q_i} S_i \\
+&=& \frac{1-q_1q_2\ldots q_i}{q_1q_2\ldots q_i} S_i \\
+&=& \frac{S_i}{q_1q_2\ldots q_i} - S_i
+\end{eqnarray*}$$
+
+---
+
+### De fausses munitions...
+
+Et donc:
+
+$$\begin{eqnarray*} 
+\sum_{j=1}^m Y_j &=& \sum_{j=1}^m \frac{S_j}{q_1q_2\ldots q_j} - \sum_{j=1}^m S_j \\
+\sum_{j=1}^m \frac{S_j}{q_1q_2\ldots q_j} &=& \sum_{j=1}^m (Y_j+S_j) \\
+&=& \sum_{j=1}^m F_j \\
+&=& N-S_0
+\end{eqnarray*}$$
+
+
+---
+
+### Un exemple
+
+Supposons que $N=400$ avions ont été envoyés en mission. Le nombre d'avion survivants est:
+
+$$\begin{eqnarray*} 
+S_0 &=& 320 \\
+S_1 &=& 32 \\
+S_2 &=& 20 \\
+S_3 &=& 4 \\
+S_4 &=& 2 \\
+S_5 &=& 2
+\end{eqnarray*}$$
+
+Il semble raisonnable de supposer que les tirs ennemis diminuent les chances pour un avion de survivre, ce qui implique que:
+
+$$q_1 \geq q_2 \geq \ldots$$
+
+Pour simplifier le problème, nous allons supposer que tous les $q_i$ sont égaux.
+
+---
+
+### Un exemple
+
+Nous avons donc:
+
+$$\frac{S_1}{q}+\frac{S_2}{q^2}+\frac{S_3}{q^3}+\frac{S_4}{q^4}+\frac{S_5}{q^5}=N-S_0$$
+
+En utilisant nos données nous avons:
+
+$$\frac{32}{q}+\frac{20}{q^2}+\frac{4}{q^3}+\frac{2}{q^4}+\frac{2}{q^5}=80$$
+
+
+

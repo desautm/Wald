@@ -63,3 +63,15 @@ ggplot(data = data.frame(x = c(0,1)), aes(x))+
                 geom = "line",
                 colour = "blue")
 
+
+
+wald <- tibble(
+  id = seq(0,5),
+  Si = c(320,32,20,4,2,2),
+  N = 400
+)
+wald <- wald %>%
+  mutate(
+    S = sum(Si),
+    D = N - S
+  )
