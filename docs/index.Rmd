@@ -1,5 +1,5 @@
 ---
-title: "Abraham Wald et les trous de balles manquants."
+title: "Mais où sont les trous de balle?"
 subtitle: "encore une présentation sur la Seconde Guerre Mondiale..."
 author: "Marc-André Désautels"
 date: "`r Sys.Date()`"
@@ -45,11 +45,11 @@ class: inverse, center, middle
 
 .pull-left[
 
-- Né le 31 octobre 1902 à Cluj-Napoca en Roumanie
+- Né le 31 octobre 1902 à Cluj-Napoca en Roumanie.
 
-- En 1927, il entre à l'université de Vienne (Autriche) où il reçoit un doctorat en mathématiques en 1931, sous la direction de Karl Menger
+- En 1927, il entre à l'université de Vienne (Autriche) où il reçoit un doctorat en mathématiques en 1931, sous la direction de Karl Menger.
 
-- À la fin de ses études, en raison de la discrimination de l'Autriche face aux Juifs, il ne parvient pas à se trouver un emploi
+- À la fin de ses études, en raison de la discrimination de l'Autriche face aux Juifs, il ne parvient pas à se trouver un emploi.
 
 ]
 .pull-right[
@@ -66,15 +66,15 @@ class: inverse, center, middle
 
 # Abraham Wald
 
-- Il se fait offrir un emploi en économie par Oskar Morgenstern (celui-ci émigre plus tard aux États-Unis et aide à inventer la thérie des jeux)
+- Il se fait offrir un emploi en économie par Oskar Morgenstern (celui-ci émigre plus tard aux États-Unis et aide à inventer la thérie des jeux).
 
-- Malgré la situation politique qui se dégrade en Autriche, Wald hésite à émigrer
+- Malgré la situation politique qui se dégrade en Autriche, Wald hésite à émigrer.
 
-- Mais les Nazis envahissent l'Autriche en 1938 et Wald part aux États-Unis avec sa famille
+- Mais les Nazis envahissent l'Autriche en 1938 et Wald part aux États-Unis avec sa famille.
 
-- Grâce à son expérience en économie, il reçoit une bourse pour travailler pour la *Cowles Commision for Research in Economics* un institut basé au Colorado
+- Grâce à son expérience en économie, il reçoit une bourse pour travailler pour la *Cowles Commision for Research in Economics* un institut basé au Colorado.
 
-- Il se fait finalement offrir un emploi de professeur de statistiques à l'université Columbia, à New-York
+- Il se fait finalement offrir un emploi de professeur de statistiques à l'université Columbia, à New-York.
 
 --
 
@@ -97,11 +97,11 @@ class: center, inverse, middle
 
 --
 
-- Le SRG était basé à l'université Columbia et supporté par le *Applied Mathematics Panel* (AMP) du *National Defense Research Committee* (NDRC), qui faisait partie du *Office of Scientific Research and Development* (OSRD)
+- Le SRG était basé à l'université Columbia et supporté par le *Applied Mathematics Panel* (AMP) du *National Defense Research Committee* (NDRC), qui faisait partie du *Office of Scientific Research and Development* (OSRD).
 
 --
 
-- Le SRG était un programme secret formé de statisticiens, un peu comme le projet Manhattan mais fabriquant des équations plutôt que des bombes
+- Le SRG était un programme secret formé de statisticiens, un peu comme le projet Manhattan mais fabriquant des équations plutôt que des bombes.
 
 --
 
@@ -113,7 +113,7 @@ class: center, inverse, middle
 
 --
 
-- *Navy planes launched rockets whose propellants had been accepted by Abe Girshick's sampling-inspection plans, and maybe the rockets exploded and destroyed our own planes and pilots or maybe they destroyed the target*
+- *Navy planes launched rockets whose propellants had been accepted by Abe Girshick's sampling-inspection plans, and maybe the rockets exploded and destroyed our own planes and pilots or maybe they destroyed the target.*
 
 ---
 
@@ -125,15 +125,15 @@ class: center, inverse, middle
 
 --
 
-- **Wilson Allen Wallis** (5 novembre 1912 - 12 octobre 1998), directeur du SRG, économiste et statisticien. Il a développé le test Kruskal-Wallis avec William Kruskal
+- **Wilson Allen Wallis** (5 novembre 1912 - 12 octobre 1998), directeur du SRG, économiste et statisticien. Il a développé le test Kruskal-Wallis avec William Kruskal.
 
 --
 
-- **Milton Friedman** (31 juillet 1912 - 16 novembre 2006), économiste. Prix Nobel d'économie en 1976 pour ses travaux sur l'analyse de la consommation, l'histoire monétaire et la démonstration de la complexité des politiques de stabilisation
+- **Milton Friedman** (31 juillet 1912 - 16 novembre 2006), économiste. Prix Nobel d'économie en 1976 pour ses travaux sur l'analyse de la consommation, l'histoire monétaire et la démonstration de la complexité des politiques de stabilisation.
 
 --
 
-- **George Stigler** (17 janvier 1911 - 1er décembre 1991), économiste. Prix Nobel d'économie en 1982 pour ses études fondatrices des structures industrielles, du fonctionnement des marchés, et des causes et effets de la régulation publique
+- **George Stigler** (17 janvier 1911 - 1er décembre 1991), économiste. Prix Nobel d'économie en 1982 pour ses études fondatrices des structures industrielles, du fonctionnement des marchés, et des causes et effets de la régulation publique.
 
 --
 
@@ -164,11 +164,11 @@ class: middle
 
 --
 
-- Mettre trop de blindage est un problème
+- Mettre trop de blindage est un problème.
 
 --
 
-- Ne pas mettre assez de blindage est un problème
+- Ne pas mettre assez de blindage est un problème.
 
 --
 
@@ -221,7 +221,7 @@ Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties
 
 ### Les trous de balles manquants
 
-Wald indiqua que le blindage ne devait pas aller aux endroits **où il avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
+Wald indiqua que le blindage ne devait pas aller aux endroits **où il y avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
 
 --
 
@@ -341,23 +341,13 @@ background-size: cover
 
 # Challenger
 
---
-
 - Le désastre de la navette Challenger s'est déroulé le 28 janvier 1986.
-
---
 
 - La navette se brisa et se désintégra après 73 secondes de vol.
 
---
-
 - L'accident choqua énormément la société américaine, en partie en raison de la présence de Christa McAuliffe, qui aurait été la première astronaute-enseignante.
 
---
-
 - Une des conséquences de cet accident est la mise sur pied de la *Rogers Commission* (formé par Neil A. Armstrong et le prix Nobel Richard P. Feynman, entre autre).
-
---
 
 - Cette commission conclut que la désintégration est causée par l'échec d'un joint d'étanchéité en raison des températures inhabituellements froides.
 
@@ -498,14 +488,6 @@ challenger +
   geom_text(x = 1, y = 0, label = "Challenger", color = "red") +
   stat_function(fun = incidents, colour = "blue")
 ```
-
----
-
-class: middle
-
-.center[
-<img src="https://media.giphy.com/media/lVzju3EudcLS0/giphy.gif" width=90%>
-]
 
 ---
 class: center, inverse, middle
