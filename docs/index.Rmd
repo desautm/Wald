@@ -1,8 +1,8 @@
 ---
-title: "Mais où sont les trous de balle?"
-subtitle: "encore une présentation sur la Seconde Guerre Mondiale..."
-author: "Marc-André Désautels"
-date: "`r Sys.Date()`"
+title: "Mais où sont les trous de balles?"
+subtitle: "(...encore une présentation sur la Seconde Guerre Mondiale...)"
+author: "[Marc-André Désautels](madesautels.rbind.io)"
+date: "19 octobre 2019"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -99,27 +99,19 @@ class: center, inverse, middle
 
 - Le SRG était basé à l'université Columbia et supporté par le *Applied Mathematics Panel* (AMP) du *National Defense Research Committee* (NDRC), qui faisait partie du *Office of Scientific Research and Development* (OSRD).
 
---
-
 - Le SRG était un programme secret formé de statisticiens, un peu comme le projet Manhattan mais fabriquant des équations plutôt que des bombes.
-
---
 
 - *[...] when we made recommendations, frequently things happened.* W. Allen Wallis
 
---
 
 - *Fighter planes entered combat with their machine guns loaded according to Jack Wolfowitz's recommendations about mixing types of ammunition, and maybe the pilots came back or maybe they didn't.*
 
---
 
 - *Navy planes launched rockets whose propellants had been accepted by Abe Girshick's sampling-inspection plans, and maybe the rockets exploded and destroyed our own planes and pilots or maybe they destroyed the target.*
 
 ---
 
 ### Le *Statistical Research Group* (SRG)
-
---
 
 - *SRG was composed of what surely must be the most extraordinary group of statisticians ever organized, taking into account both number and quality.* W. Allen Wallis
 
@@ -195,7 +187,7 @@ Les officiers de l'armée y ont vu une opportunité d'efficacité.
 
 Obtenir la même protection avec moins de blindage, si on se concentre sur les endroits en ayant davantage besoin.
 
-Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties de l'avion.
+Ils demandèrent à Wald quelle quantité de blindage ajouter aux diverses parties de l'avion.
 
 --
 
@@ -208,20 +200,20 @@ Ils demandèrent à Wald quelle quantité de blindage ajouter aux divers parties
 | Système de carburant                    | 1,55                             |
 | Reste de l'avion                        | 1,8                              |
 
---
+<!-- -- -->
 
-### Vous pouvez voter à l'adresse: [http://bit.ly/TrousBalles](http://bit.ly/TrousBalles)
+<!-- ### Vous pouvez voter à l'adresse: [http://bit.ly/TrousBalles](http://bit.ly/TrousBalles) -->
 
----
-### Les résultats
+<!-- --- -->
+<!-- ### Les résultats -->
 
-<iframe seamless src="https://docs.google.com/spreadsheets/d/1tgbKRrHQnyDP2lvgH5iQhrxLG75C3TafKSjFwmVEqkM/htmlembed/sheet?gid=1284962309&range=D2" width="800" height="500" frameborder="0" scrolling="no"></iframe>
+<!-- <iframe seamless src="https://docs.google.com/spreadsheets/d/1tgbKRrHQnyDP2lvgH5iQhrxLG75C3TafKSjFwmVEqkM/htmlembed/sheet?gid=1284962309&range=D2" width="800" height="500" frameborder="0" scrolling="no"></iframe> -->
 
 ---
 
 ### Les trous de balles manquants
 
-Wald indiqua que le blindage ne devait pas aller aux endroits **où il y avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
+# Wald indiqua que le blindage ne devait pas aller aux endroits **où il y avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
 
 --
 
@@ -281,23 +273,13 @@ class: inverse, center middle
 
 ### Quelques exemples
 
---
-
 - En finance, le biais du survivant survient lors de l'exclusion des entreprises ayant fait faillite des études de performance.
-
---
 
 - En production industrielle, on entend souvent « les produits étaient mieux fabriqués avant ».
 
---
-
 - En architecture et en construction, les bâtiments de plus de 100 ans encore debout.
 
---
-
 - Dans les carrières hypercompétitives, commes les athlètes d'élite.
-
---
 
 - Une étude réalisée en 1987 montre que les chats qui chutent d'une hauteur équivalente à moins de six étages et qui survivent ont des blessures plus graves que les chats tombant d'une hauteur plus élevée.
 
@@ -416,7 +398,7 @@ La nuit avant le décollage, une téléconférence a eue lieu entre les ingénie
 nasa %>% 
   filter(!is.na(DamageIndex) & DamageIndex > 0) %>% 
   ggplot(aes(x = Celsius, y = ErosionOrBlowby)) +
-  geom_jitter(width = 0, height = 0.1) +
+  geom_point() +
   scale_x_continuous(name = "Température en degrés Celsius", limits = c(-5,30), breaks = seq(-5,30,5))  +
   scale_y_continuous(name = "Nombre d'incidents", limits = c(-0.5,2.5), breaks = seq(0,2,1))
 ```
@@ -441,11 +423,28 @@ La commission Rogers trouva une grave erreur dans la figure précédente, **les 
 
 ```{r, echo = FALSE, fig.align='center', fig.height = 5}
 nasa %>% 
+  filter(!is.na(DamageIndex) & DamageIndex > 0) %>% 
+  ggplot(aes(x = Celsius, y = ErosionOrBlowby)) +
+  geom_point() +
+  scale_x_continuous(name = "Température en degrés Celsius", limits = c(-5,30), breaks = seq(-5,30,5))  +
+  scale_y_continuous(name = "Nombre d'incidents (vols sans incidents exclus)", limits = c(-0.5,2.5), breaks = seq(0,2,1))
+```
+
+---
+
+### Les joints d'étanchéité
+
+La commission Rogers trouva une grave erreur dans la figure précédente, **les vols sans aucuns incidents avaient été exclus** du graphique car *on croyait* que **ces vols ne contribuaient aucune information sur l'effet de la température**.
+
+> *A careful analysis of the flight history of O-ring performance would have revealed the correlation of O-ring damage in low temperature*
+
+```{r, echo = FALSE, fig.align='center', fig.height = 5}
+nasa %>% 
   filter(!is.na(DamageIndex) & DamageIndex >= 0) %>% 
   ggplot(aes(x = Celsius, y = ErosionOrBlowby)) +
-  geom_jitter(width = 0, height = 0.1) +
+  geom_point() +
   scale_x_continuous(name = "Température en degrés Celsius", limits = c(-5,30), breaks = seq(-5,30,5))  +
-  scale_y_continuous(name = "Nombre d'incidents", limits = c(-0.5,2.5), breaks = seq(0,2,1))
+  scale_y_continuous(name = "Nombre d'incidents (vols sans incidents inclus)", limits = c(-0.5,2.5), breaks = seq(0,2,1))
 ```
 
 ---
@@ -492,9 +491,58 @@ challenger +
 ---
 class: center, inverse, middle
 
-# Les mathématiques
+# Les travaux de Wald au SRG
 
-### La vulnérabilité des avions
+---
+class: center, middle
+
+```{tikz,echo=FALSE,fig.align="center",out.width="65%"}
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,text width=40em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, ->]
+
+\begin{tikzpicture}[node distance = 2cm, auto]
+
+\node [block] (init) {SRG  Mémo 85 \\ Définition du problème};
+\node [block,below of=init] (SRGMemo85) {SRG  Mémo 85 \\ Équation de base};
+\node [block,below of=SRGMemo85] (SRGMemo87) {SRG  Mémo 87 \\ Borne supérieure exacte sur $1-\prod\limits_{j=1}^{i} q_j$};
+\node [block,below of=SRGMemo87] (SRGMemo88) {SRG  Mémo 88 \\ Borne supérieure approximative sur $1-\prod\limits_{j=1}^{i} q_j$};
+\node [block,below of=SRGMemo88] (SRGMemo89) {SRG  Mémo 89 \\ Bornes sur $1-\prod\limits_{j=1}^{i} q_j$ sous l'hypothèse que $\lambda_1 q_j \leq q_{j+1} \leq \lambda_2 q_j$};
+\node [block,below of=SRGMemo89] (SRGMemo96) {SRG  Mémo 96 \\ Division de l'avion en sections de vulnérabilité variées};
+\node [block,below of=SRGMemo96] (SRGMemo103) {SRG  Mémo 103 \\ Erreurs d'échantillonnage};
+\node [block,below of=SRGMemo103] (SRGMemo109126) {SRG  Mémos 109 et 126 \\ Autres};
+
+% Draw edges
+\path [line] (init) -- (SRGMemo85);
+\path [line] (SRGMemo85) -- (SRGMemo87);
+\path [line] (SRGMemo87) -- (SRGMemo88);
+\path [line] (SRGMemo88) -- (SRGMemo89);
+\path [line] (SRGMemo89) -- (SRGMemo96);
+\path [line] (SRGMemo96) -- (SRGMemo103);
+\path [line] (SRGMemo103) -- (SRGMemo109126);
+
+\end{tikzpicture}
+```
+
+---
+class: center, inverse, middle
+
+# La vulnérabilité des avions
+
+---
+
+## Un exemple du type de problème que devait résoudre Wald
+
+|                                       | Nombre |
+|--------------------------------------:|--------|
+|              Avions partis en mission | 400    |
+|                 Avions qui reviennent | 380    |
+|                        Avions abattus | 20     |
+| Avions revenus sans aucun coup au but | 320    |
+|     Avions revenus avec 1 coup au but | 32     |
+|    Avions revenus avec 2 coups au but | 20     |
+|    Avions revenus avec 3 coups au but | 4      |
+|    Avions revenus avec 4 coups au but | 2      |
+|    Avions revenus avec 5 coups au but | 2      |
 
 ---
 
@@ -510,6 +558,20 @@ class: center, inverse, middle
 | $Q_i$ | la probabilité de l'événement contraire |
 | $p_i$ | la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu |
 | $q_i$ | la probabilité de l'événement contraire |
+
+---
+
+### Les hypothèses
+
+- Nous connaissons $N$.
+
+- Nous connaissons pour tout $i$ ( $i=0,1,2,\ldots$ ) les nombres $S_i$.
+
+- Nous supposons que tous les avions disparus le sont en raison de tirs ennemis et donc $D_0=0$. Ceci implique que nous supposons qu'aucun avion ne peut être porté disparu en raison de problèmes mécaniques.
+
+- Le nombre de tirs sur un avion est borné, c'est-à-dire que $D_j=0$ pour $j$ plus grand qu'un certain entier $m$.
+
+- Pour simplifier la notation, nous écrirons $N_{j\geq i}$ pour signifier $\sum\limits_{j\geq i}N_j$.
 
 ---
 
@@ -533,21 +595,9 @@ class: center, inverse, middle
 
 ---
 
-### Les hypothèses
+Rappelons que $p_i$ représente la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu. Nous pouvons donc écrire $p_i=\frac{D_i}{N_{j\geq i}}$.
 
-- Nous connaissons $N$.
-
-- Nous connaissons pour tout $i$ ( $i=0,1,2,\ldots$ ) les nombres $S_i$.
-
-- Nous supposons que tous les avions disparus le sont en raison de tirs ennemis et donc $D_0=0$. Ceci implique que nous supposons qu'aucun avion ne peut être porté disparu en raison de problèmes mécaniques.
-
-- Le nombre de tirs sur un avion est borné, c'est-à-dire que $D_j=0$ pour $j$ plus grand qu'un certain entier $m$.
-
-- Pour simplifier la notation, nous écrirons $N_{j\geq i}$ pour signifier $\sum\limits_{j\geq i}N_j$.
-
----
-
-Rappelons que $p_i$ représente la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu. Nous pouvons donc écrire $p_i=\frac{D_i}{N_{j\geq i}}$. 
+--
 
 Nous avons donc:
 
@@ -583,6 +633,8 @@ $$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
 ---
 
 ### De fausses munitions...
+
+--
 
 Posons $F_i$ le nombre d'avions ayant été touchés $i$ fois par de fausses munitions.
 

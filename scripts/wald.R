@@ -41,6 +41,8 @@ waldD <- function(data){
 
 D <- waldD(wald)
 
+
+
 polynome <- function(x,data){
 
   n <- length(data)
