@@ -39,6 +39,13 @@ class: center, middle
 ---
 class: inverse, center, middle
 
+# Abraham Wald
+
+### Surtout connu pour se travaux sur l'analyse séquentielle, nous présenterons certains de ses travaux moins connus
+
+---
+class: inverse, center, middle
+
 # La jeunesse
 
 ---
@@ -748,7 +755,11 @@ class: center, inverse, middle
 
 ---
 
-Rappelons que `\(p_i\)` représente la probabilité conditionnelle qu'un avion soit abattu par le `\(i\)`ème coup au but, étant donné que les premiers `\(i-1\)` coups ne l'ont pas abattu. Nous pouvons donc écrire `\(p_i=\frac{D_i}{N_{j\geq i}}\)`. 
+Rappelons que `\(p_i\)` représente la probabilité conditionnelle qu'un avion soit abattu par le `\(i\)`ème coup au but, étant donné que les premiers `\(i-1\)` coups ne l'ont pas abattu. Nous pouvons donc écrire: 
+
+`$$p_i=\frac{D_i}{N_{j\geq i}}=\dfrac{\text{Avions disparus avec i coups au but}}{\text{Avions ayant reçus i coups au but ou plus}}$$`
+
+--
 
 Nous avons donc:
 
@@ -780,6 +791,10 @@ En vérité, il n'est pas possible de les trouver, mais Wald parvient à trouver
 Pour ce faire, il utilise l'équation suivante:
 
 $$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
+
+--
+
+## D'où vient l'équation précédente?
 
 ---
 
