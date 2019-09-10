@@ -1,7 +1,7 @@
 ---
 title: "Mais où sont les trous de balles?"
 subtitle: "(...encore une présentation sur la Seconde Guerre Mondiale...)"
-author: "[Marc-André Désautels](madesautels.rbind.io)"
+author: "[Marc-André Désautels](https://madesautels.rbind.io)"
 date: "19 octobre 2019"
 output:
   xaringan::moon_reader:
