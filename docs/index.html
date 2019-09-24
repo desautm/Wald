@@ -222,7 +222,7 @@ Ils demandèrent à Wald quelle quantité de blindage ajouter aux diverses parti
 
 ### Les trous de balles manquants
 
-# Wald indiqua que le blindage ne devait pas aller aux endroits **où il y avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
+### Wald indiqua que le blindage ne devait pas aller aux endroits **où il y avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
 
 --
 
@@ -690,7 +690,7 @@ class: center, inverse, middle
 
 ---
 
-## Un exemple du type de problème que devait résoudre Wald
+### Un exemple du type de problème que devait résoudre Wald
 
 |                                       | Nombre |
 |--------------------------------------:|--------|
@@ -723,9 +723,9 @@ class: center, inverse, middle
 
 ### Les hypothèses
 
-- Nous connaissons `\(N\)`.
+- Nous connaissons `\(N\)`, le nombre d'avions total.
 
-- Nous connaissons pour tout `\(i\)` ( `\(i=0,1,2,\ldots\)` ) les nombres `\(S_i\)`.
+- Nous connaissons pour tout `\(i\)` ( `\(i=0,1,2,\ldots\)` ) les nombres `\(S_i\)`, c'est-à-dire le  nombre d'avions ayant survécu à `\(i\)` coups.
 
 - Nous supposons que tous les avions disparus le sont en raison de tirs ennemis et donc `\(D_0=0\)`. Ceci implique que nous supposons qu'aucun avion ne peut être porté disparu en raison de problèmes mécaniques.
 
@@ -757,7 +757,7 @@ class: center, inverse, middle
 
 Rappelons que `\(p_i\)` représente la probabilité conditionnelle qu'un avion soit abattu par le `\(i\)`ème coup au but, étant donné que les premiers `\(i-1\)` coups ne l'ont pas abattu. Nous pouvons donc écrire: 
 
-`$$p_i=\frac{D_i}{N_{j\geq i}}=\dfrac{\text{Avions disparus avec i coups au but}}{\text{Avions ayant reçus i coups au but ou plus}}$$`
+`$$p_i=\dfrac{\text{Avions disparus avec i coups au but}}{\text{Avions ayant reçus i coups au but ou plus}}=\frac{D_i}{N_{j\geq i}}$$`
 
 --
 
@@ -768,6 +768,8 @@ D_i &amp;=&amp; p_i \left( N_{j\geq i} \right) \\
 &amp;=&amp; p_i \left( N - N_{j&lt; i} \right) \\
 &amp;=&amp; p_i \left( N - S_{j&lt; i} - D_{j&lt; i} \right)
 \end{eqnarray*}$$`
+
+--
 
 L'idée géniale de Wald est de se rendre compte que nous pouvons résoudre l'équation précédente par induction sur `\(i\)` car nous savons que `\(D_0=0\)`. Ainsi:
 
@@ -794,21 +796,23 @@ $$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
 
 --
 
-## D'où vient l'équation précédente?
+### D'où vient cette équation?
 
 ---
 
 ### De fausses munitions...
 
---
-
 Posons `\(F_i\)` le nombre d'avions ayant été touchés `\(i\)` fois par de fausses munitions.
 
-Nous avons `\(F_i \geq S_i\)`.
-
-Posons `\(Y_i = F_i - S_i\)`.
+Clairement, nous avons `\(F_i \geq S_i\)`. Nous pouvons donc poser `\(Y_i = F_i - S_i\)`.
 
 Nous avons `\(F_0 = S_0\)` ce qui implique que `\(Y_0=0\)` et `\(\sum_{j=0}^n F_i = N\)`.
+
+--
+
+Le nombre d'avions `\(Y_i\)` peut être trouvé en multipliant le nombre d'avions touchés `\(i\)` fois par de fausses munitions, par la probabilité qu'un avion soit abattu par `\(i\)` coups au but. C'est-à-dire:
+
+$$ Y_i = P_i F_i $$
 
 ---
 
@@ -870,6 +874,12 @@ Nous avons donc:
 En utilisant nos données nous avons:
 
 `$$\frac{32}{q}+\frac{20}{q^2}+\frac{4}{q^3}+\frac{2}{q^4}+\frac{2}{q^5}=80$$`
+
+---
+
+Si nous représentons l'équation précédente.
+
+&lt;img src="index_files/figure-html/unnamed-chunk-10-1.png" width="504" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -916,7 +926,24 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 (function() {

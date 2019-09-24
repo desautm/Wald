@@ -1,0 +1,57 @@
+---
+title: "Aide-mémoire"
+author: "Marc-André Désautels"
+date: "24/09/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Voici un aide-mémoire pour accompagner la présentation de Marc-André Désautels, portant sur les travaux de Abraham Wald.
+
+### Quelques notations
+
+| Notation | Définition |
+|:--------:|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+| $N$ | le nombre d'avions au total |
+| $S$ | le nombre d'avions survivants |
+| $D$ | le nombre d'avions disparus |
+| $X_i$ | le nombre d'avions ... touchés $i$ fois |
+| $P_i$ | la probabilité qu'un avion soit abattu par $i$ coups au but |
+| $Q_i$ | la probabilité de l'événement contraire |
+| $p_i$ | la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu |
+| $q_i$ | la probabilité de l'événement contraire |
+
+### Les hypothèses
+
+- Nous connaissons $N$, le nombre d'avions total.
+
+- Nous connaissons pour tout $i$ ( $i=0,1,2,\ldots$ ) les nombres $S_i$, c'est-à-dire le  nombre d'avions ayant survécu à $i$ coups.
+
+- Nous supposons que tous les avions disparus le sont en raison de tirs ennemis et donc $D_0=0$. Ceci implique que nous supposons qu'aucun avion ne peut être porté disparu en raison de problèmes mécaniques.
+
+- Le nombre de tirs sur un avion est borné, c'est-à-dire que $D_j=0$ pour $j$ plus grand qu'un certain entier $m$.
+
+- Pour simplifier la notation, nous écrirons $N_{j\geq i}$ pour signifier $\sum\limits_{j\geq i}N_j$.
+
+### Quelques résultats « évidents »
+
+- Le nombre total d'avions envoyés au combat est égal à la somme des avions survivants et des avions disparus, c'est-à-dire que $N = S+D$.
+
+- De façon similaire, en étudiant les avions touchés au but $i$ fois, nous avons $N_i = S_i+D_i$.
+
+- La probabilité qu'un avion ne soit pas abattu par $i$ coups au but est en fait la probabilité de ne pas être abattu par 1 coup (en ayant survécu aux coups précédents) et de ne pas être abattu par 2 coups (en ayant survécu aux coups précédents), ... et de ne pas être abattu par $i$ coups (en ayant survécu aux coups précédents). Nous avons donc $Q_i = q_1 q_2 \ldots q_i$.
+
+- La probabilité d'être abattu par $i$ coups au but est donc $P_i = 1-Q_i = 1 - q_1 q_2 \ldots q_i$.
+
+### De fausses munitions...
+
+Posons $F_i$ le nombre d'avions ayant été touchés $i$ fois par de fausses munitions.
+
+Nous avons $F_i \geq S_i$.
+
+Posons $Y_i = F_i - S_i$.
+
+Nous avons $F_0 = S_0$ ce qui implique que $Y_0=0$ et $\sum_{j=0}^n F_i = N$.

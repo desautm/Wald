@@ -220,7 +220,7 @@ Ils demandèrent à Wald quelle quantité de blindage ajouter aux diverses parti
 
 ### Les trous de balles manquants
 
-# Wald indiqua que le blindage ne devait pas aller aux endroits **où il y avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
+### Wald indiqua que le blindage ne devait pas aller aux endroits **où il y avait des trous**. Il devait aller aux endroits **où il n'y en avait pas**.
 
 --
 
@@ -537,7 +537,7 @@ class: center, inverse, middle
 
 ---
 
-## Un exemple du type de problème que devait résoudre Wald
+### Un exemple du type de problème que devait résoudre Wald
 
 |                                       | Nombre |
 |--------------------------------------:|--------|
@@ -570,9 +570,9 @@ class: center, inverse, middle
 
 ### Les hypothèses
 
-- Nous connaissons $N$.
+- Nous connaissons $N$, le nombre d'avions total.
 
-- Nous connaissons pour tout $i$ ( $i=0,1,2,\ldots$ ) les nombres $S_i$.
+- Nous connaissons pour tout $i$ ( $i=0,1,2,\ldots$ ) les nombres $S_i$, c'est-à-dire le  nombre d'avions ayant survécu à $i$ coups.
 
 - Nous supposons que tous les avions disparus le sont en raison de tirs ennemis et donc $D_0=0$. Ceci implique que nous supposons qu'aucun avion ne peut être porté disparu en raison de problèmes mécaniques.
 
@@ -604,7 +604,7 @@ class: center, inverse, middle
 
 Rappelons que $p_i$ représente la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu. Nous pouvons donc écrire: 
 
-$$p_i=\frac{D_i}{N_{j\geq i}}=\dfrac{\text{Avions disparus avec i coups au but}}{\text{Avions ayant reçus i coups au but ou plus}}$$
+$$p_i=\dfrac{\text{Avions disparus avec i coups au but}}{\text{Avions ayant reçus i coups au but ou plus}}=\frac{D_i}{N_{j\geq i}}$$
 
 --
 
@@ -615,6 +615,8 @@ D_i &=& p_i \left( N_{j\geq i} \right) \\
 &=& p_i \left( N - N_{j< i} \right) \\
 &=& p_i \left( N - S_{j< i} - D_{j< i} \right)
 \end{eqnarray*}$$
+
+--
 
 L'idée géniale de Wald est de se rendre compte que nous pouvons résoudre l'équation précédente par induction sur $i$ car nous savons que $D_0=0$. Ainsi:
 
@@ -641,21 +643,23 @@ $$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
 
 --
 
-## D'où vient l'équation précédente?
+### D'où vient cette équation?
 
 ---
 
 ### De fausses munitions...
 
---
-
 Posons $F_i$ le nombre d'avions ayant été touchés $i$ fois par de fausses munitions.
 
-Nous avons $F_i \geq S_i$.
-
-Posons $Y_i = F_i - S_i$.
+Clairement, nous avons $F_i \geq S_i$. Nous pouvons donc poser $Y_i = F_i - S_i$.
 
 Nous avons $F_0 = S_0$ ce qui implique que $Y_0=0$ et $\sum_{j=0}^n F_i = N$.
+
+--
+
+Le nombre d'avions $Y_i$ peut être trouvé en multipliant le nombre d'avions touchés $i$ fois par de fausses munitions, par la probabilité qu'un avion soit abattu par $i$ coups au but. C'est-à-dire:
+
+$$ Y_i = P_i F_i $$
 
 ---
 
@@ -718,5 +722,28 @@ En utilisant nos données nous avons:
 
 $$\frac{32}{q}+\frac{20}{q^2}+\frac{4}{q^3}+\frac{2}{q^4}+\frac{2}{q^5}=80$$
 
+---
+
+Si nous représentons l'équation précédente.
+
+```{r,echo=FALSE,fig.align='center'}
+polynome <- function(x){
+
+  result <- 32/x+20/x^2+4/x^3+2/x^4+2/x^5
+
+  return(result)
+
+}
+
+ggplot(data = data.frame(x = c(0,1)), aes(x))+
+  stat_function(fun = polynome,
+                geom = "line",
+                colour = "blue")+
+  scale_x_continuous(breaks=seq(0,1,0.1))+
+  ylim(0,200)+
+  xlab("q")+
+  ylab("")+
+  geom_hline(yintercept = 80, color = "red", size = 1)
+```
 
 
