@@ -18,6 +18,51 @@ opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE)
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
 library(kableExtra)
+
+wald <- c(400,320,32,20,4,2,2)
+
+waldQ <- function(data){
+
+  n <- length(data)
+  pz <- polyroot(c(-data[n:3],data[1]-data[2]))
+  id <- (abs(Im(pz))<0.005)
+  q <- Re(pz[id])
+  return(q)
+
+}
+
+waldD <- function(data){
+
+  n <- length(data)
+  q <- waldQ(data)
+  p <- 1-q
+
+  D <- rep(0,n-1)
+
+  for (i in 2:(n-1)) {
+
+    D[i] <- p*(data[1]-sum(data[2:i])-sum(D[2:i]))
+
+  }
+
+  return(D)
+
+}
+
+polynome <- function(x,data){
+
+  n <- length(data)
+  coeff <- c(-data[n:3],data[1]-data[2])
+  result <- 0
+  for (i in 1:length(coeff)){
+
+    result <- result + coeff[i]*x^i
+
+  }
+
+  return(result)
+
+}
 ```
 
 class: inverse, middle
@@ -602,7 +647,9 @@ class: center, inverse, middle
 
 ---
 
-Rappelons que $p_i$ représente la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu. Nous pouvons donc écrire: 
+Rappelons que $p_i$ représente la probabilité conditionnelle qu'un avion soit abattu par le $i$ème coup au but, étant donné que les premiers $i-1$ coups ne l'ont pas abattu. Nous pouvons donc écrire:
+
+--
 
 $$p_i=\dfrac{\text{Avions disparus avec i coups au but}}{\text{Avions ayant reçus i coups au but ou plus}}=\frac{D_i}{N_{j\geq i}}$$
 
@@ -618,7 +665,7 @@ D_i &=& p_i \left( N_{j\geq i} \right) \\
 
 --
 
-L'idée géniale de Wald est de se rendre compte que nous pouvons résoudre l'équation précédente par induction sur $i$ car nous savons que $D_0=0$. Ainsi:
+Nous pouvons résoudre l'équation précédente par induction sur $i$ car nous savons que $D_0=0$. Ainsi:
 
 $$\begin{eqnarray*} 
 D_0 &=& 0 \\
@@ -649,11 +696,25 @@ $$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
 
 ### De fausses munitions...
 
+--
+
 Posons $F_i$ le nombre d'avions ayant été touchés $i$ fois par de fausses munitions.
 
-Clairement, nous avons $F_i \geq S_i$. Nous pouvons donc poser $Y_i = F_i - S_i$.
+--
 
-Nous avons $F_0 = S_0$ ce qui implique que $Y_0=0$ et $\sum_{j=0}^n F_i = N$.
+Clairement, nous avons $F_i \geq S_i$.
+
+--
+
+Nous pouvons donc poser $Y_i = F_i - S_i$.
+
+--
+
+Le nombre d'avions touchés aucune fois par de fausses munitions est nécessairement égal au nombre d'avions survivants n'ayant été touchés aucune fois.
+
+--
+
+Nous avons $F_0 = S_0$ ce qui implique que $Y_0=0$ et $\sum\limits_{j=0}^n F_i = N$.
 
 --
 
@@ -665,7 +726,7 @@ $$ Y_i = P_i F_i $$
 
 ### De fausses munitions...
 
-Nous avons:
+À partir du résultat précédent:
 
 $$\begin{eqnarray*} 
 Y_i &=& P_i F_i = P_i(S_i+Y_i) \quad \text{(pour } i=1,2,\ldots, n) \\
@@ -704,11 +765,15 @@ S_4 &=& 2 \\
 S_5 &=& 2
 \end{eqnarray*}$$
 
+--
+
 Il semble raisonnable de supposer que les tirs ennemis diminuent les chances pour un avion de survivre, ce qui implique que:
 
 $$q_1 \geq q_2 \geq \ldots$$
 
-Pour simplifier le problème, nous allons supposer que tous les $q_i$ sont égaux.
+--
+
+Pour simplifier le problème, nous allons supposer que tous les $q_i$ sont égaux. Pour sa part, Wald trouve plusieurs façon d'estimer les probabilités avec des hypothèses moins restrictives.
 
 ---
 
@@ -722,28 +787,27 @@ En utilisant nos données nous avons:
 
 $$\frac{32}{q}+\frac{20}{q^2}+\frac{4}{q^3}+\frac{2}{q^4}+\frac{2}{q^5}=80$$
 
+que nous pouvons écrire sous forme de polynôme de degré cinq:
+
+$$ 80q^5-32q^4-20q^3-4q^2-2q-2=0$$
+
 ---
 
-Si nous représentons l'équation précédente.
+Si nous représentons le polynôme précédent.
 
 ```{r,echo=FALSE,fig.align='center'}
-polynome <- function(x){
-
-  result <- 32/x+20/x^2+4/x^3+2/x^4+2/x^5
-
-  return(result)
-
-}
-
 ggplot(data = data.frame(x = c(0,1)), aes(x))+
   stat_function(fun = polynome,
+                args = list(data = wald),
                 geom = "line",
                 colour = "blue")+
   scale_x_continuous(breaks=seq(0,1,0.1))+
-  ylim(0,200)+
+  ylim(-5,2)+
   xlab("q")+
   ylab("")+
-  geom_hline(yintercept = 80, color = "red", size = 1)
+  geom_hline(yintercept = 80, color = "red", size = 1)+
+  geom_point(aes(x=waldQ(wald),y=0),colour="red")+
+  annotate("text",x=waldQ(wald)+0.025,y=0,label="q")
 ```
 
 

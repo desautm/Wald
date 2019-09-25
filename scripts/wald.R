@@ -2,15 +2,6 @@ library(tidyverse)
 
 wald <- c(400,320,32,20,4,2,2)
 
-# wald <- tibble(N = 400, Si = c(320,32,20,4,2,2))
-# wald <- wald %>%
-#   mutate(
-#     S = sum(Si),
-#     D = N - S,
-#     si = Si/N
-#     )
-
-
 waldQ <- function(data){
 
   n <- length(data)
