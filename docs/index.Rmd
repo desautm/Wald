@@ -805,9 +805,24 @@ ggplot(data = data.frame(x = c(0,1)), aes(x))+
   ylim(-5,2)+
   xlab("q")+
   ylab("")+
-  geom_hline(yintercept = 80, color = "red", size = 1)+
   geom_point(aes(x=waldQ(wald),y=0),colour="red")+
   annotate("text",x=waldQ(wald)+0.025,y=0,label="q")
+```
+
+--
+
+La valeur de $q$ obtenue est `r waldQ(wald)`.
+
+---
+
+En utilisant le résultat précédent et les équations que nous avons trouvées, nous pouvons évaluer le nombre d'avions disparus $D_i$.
+
+```{r, echo=FALSE}
+D <- tibble::enframe((waldD(wald)), value = "Nombre") %>% 
+  mutate(Di = name-1, Probabilite = Nombre/sum(Nombre)) %>% 
+  select(Di, Nombre, Probabilite)
+D %>% 
+  kable(format = "html")
 ```
 
 
