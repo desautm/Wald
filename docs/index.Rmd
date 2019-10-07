@@ -819,10 +819,13 @@ En utilisant le résultat précédent et les équations que nous avons trouvées
 
 ```{r, echo=FALSE}
 D <- tibble::enframe((waldD(wald)), value = "Nombre") %>% 
-  mutate(Di = name-1, Probabilite = Nombre/sum(Nombre)) %>% 
-  select(Di, Nombre, Probabilite)
+  mutate(Di = name-1, 'Probabilité' = Nombre/sum(Nombre)) %>% 
+  select(Di, Nombre, 'Probabilité')
 D %>% 
   kable(format = "html")
 ```
 
+---
+class: inverse, center, middle
 
+# Questions ?
