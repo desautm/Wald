@@ -7,6 +7,54 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+
+wald <- c(400,320,32,20,4,2,2)
+dummy <- c(5000,3800,100,50,25,25,10)
+
+waldQ <- function(data){
+
+  n <- length(data)
+  pz <- polyroot(c(-data[n:3],data[1]-data[2]))
+  id <- (abs(Im(pz))<0.005)
+  q <- Re(pz[id])
+  return(q)
+
+}
+
+waldD <- function(data){
+
+  n <- length(data)
+  q <- waldQ(data)
+  p <- 1-q
+
+  D <- rep(0,n-1)
+
+  for (i in 2:(n-1)) {
+
+    D[i] <- p*(data[1]-sum(data[2:i])-sum(D[2:i]))
+
+  }
+
+  return(D)
+
+}
+
+polynome <- function(x,data){
+
+  n <- length(data)
+  coeff <- c(-data[n:3],data[1]-data[2])
+  result <- 0
+  for (i in 1:length(coeff)){
+
+    result <- result + coeff[i]*x^i
+
+  }
+
+  return(result)
+
+}
 ```
 
 Voici un aide-mémoire pour accompagner la présentation de Marc-André Désautels, portant sur les travaux de Abraham Wald.
@@ -50,8 +98,44 @@ Voici un aide-mémoire pour accompagner la présentation de Marc-André Désaute
 
 Posons $F_i$ le nombre d'avions ayant été touchés $i$ fois par de fausses munitions.
 
-Nous avons $F_i \geq S_i$.
+Nous avons $F_i \geq S_i$ et $\sum_{j=0}^n F_i = N$.
 
 Posons $Y_i = F_i - S_i$.
 
-Nous avons $F_0 = S_0$ ce qui implique que $Y_0=0$ et $\sum_{j=0}^n F_i = N$.
+Nous avons $F_0 = S_0$ ce qui implique que $Y_0=0$.
+
+Nous pouvons montrer que 
+$$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
+
+### Un exemple
+
+Supposons que $N=400$ avions ont été envoyés en mission. Le nombre d'avion survivants est:
+
+| $S_i$ | Nombre |
+|:--:|:---:|
+| $S_0$ | 320 |
+| $S_1$ | 32 |
+| $S_2$ | 20 |
+| $S_3$ | 4 |
+| $S_4$ | 2 |
+| $S_5$ | 2 |
+
+En utilisant nos données nous avons:
+
+$$\frac{32}{q}+\frac{20}{q^2}+\frac{4}{q^3}+\frac{2}{q^4}+\frac{2}{q^5}=80$$
+
+que nous pouvons écrire sous forme de polynôme de degré cinq:
+
+$$ 80q^5-32q^4-20q^3-4q^2-2q-2=0$$
+
+La valeur de $q$ obtenue est `r waldQ(wald)`.
+
+En utilisant le résultat précédent et les équations que nous avons trouvées, nous pouvons évaluer le nombre d'avions disparus $D_i$.
+
+```{r, echo=FALSE}
+D <- tibble::enframe((waldD(wald)), value = "Nombre") %>% 
+  mutate(Di = name-1, 'Probabilité' = Nombre/sum(Nombre)) %>% 
+  select(Di, Nombre, 'Probabilité')
+D %>% 
+  kable()
+```
