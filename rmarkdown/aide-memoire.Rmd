@@ -1,7 +1,6 @@
 ---
 title: "Aide-mémoire"
 author: "Marc-André Désautels"
-date: "24/09/2019"
 output: pdf_document
 ---
 
@@ -93,49 +92,3 @@ Voici un aide-mémoire pour accompagner la présentation de Marc-André Désaute
 - La probabilité qu'un avion ne soit pas abattu par $i$ coups au but est en fait la probabilité de ne pas être abattu par 1 coup (en ayant survécu aux coups précédents) et de ne pas être abattu par 2 coups (en ayant survécu aux coups précédents), ... et de ne pas être abattu par $i$ coups (en ayant survécu aux coups précédents). Nous avons donc $Q_i = q_1 q_2 \ldots q_i$.
 
 - La probabilité d'être abattu par $i$ coups au but est donc $P_i = 1-Q_i = 1 - q_1 q_2 \ldots q_i$.
-
-### De fausses munitions...
-
-Posons $F_i$ le nombre d'avions ayant été touchés $i$ fois par de fausses munitions.
-
-Nous avons $F_i \geq S_i$ et $\sum_{j=0}^n F_i = N$.
-
-Posons $Y_i = F_i - S_i$.
-
-Nous avons $F_0 = S_0$ ce qui implique que $Y_0=0$.
-
-Nous pouvons montrer que 
-$$ \sum_{j=1}^m \frac{S_j}{q_1q_2 \ldots q_j} = N-S_0$$
-
-### Un exemple
-
-Supposons que $N=400$ avions ont été envoyés en mission. Le nombre d'avion survivants est:
-
-| $S_i$ | Nombre |
-|:--:|:---:|
-| $S_0$ | 320 |
-| $S_1$ | 32 |
-| $S_2$ | 20 |
-| $S_3$ | 4 |
-| $S_4$ | 2 |
-| $S_5$ | 2 |
-
-En utilisant nos données nous avons:
-
-$$\frac{32}{q}+\frac{20}{q^2}+\frac{4}{q^3}+\frac{2}{q^4}+\frac{2}{q^5}=80$$
-
-que nous pouvons écrire sous forme de polynôme de degré cinq:
-
-$$ 80q^5-32q^4-20q^3-4q^2-2q-2=0$$
-
-La valeur de $q$ obtenue est `r waldQ(wald)`.
-
-En utilisant le résultat précédent et les équations que nous avons trouvées, nous pouvons évaluer le nombre d'avions disparus $D_i$.
-
-```{r, echo=FALSE}
-D <- tibble::enframe((waldD(wald)), value = "Nombre") %>% 
-  mutate(Di = name-1, 'Probabilité' = Nombre/sum(Nombre)) %>% 
-  select(Di, Nombre, 'Probabilité')
-D %>% 
-  kable()
-```
