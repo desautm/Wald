@@ -786,7 +786,7 @@ Pour simplifier le problème, nous allons supposer que tous les $q_i$ sont égau
 
 Nous avons donc:
 
-$$\frac{S_1}{q}+\frac{S_2}{q^2}+\frac{S_3}{q^3}+\frac{S_4}{q^4}+\frac{S_5}{q^5}=N-S_0$$
+$$\sum_{j=1}^5 \frac{S_j}{q_1q_2\ldots q_j}=\sum_{j=1}^5 \frac{S_j}{q^j}=\frac{S_1}{q}+\frac{S_2}{q^2}+\frac{S_3}{q^3}+\frac{S_4}{q^4}+\frac{S_5}{q^5}=N-S_0$$
 
 En utilisant nos données nous avons:
 
@@ -822,6 +822,15 @@ La valeur de $q$ obtenue est `r waldQ(wald)`.
 
 En utilisant le résultat précédent et les équations que nous avons trouvées, nous pouvons évaluer le nombre d'avions disparus $D_i$.
 
+$$\begin{eqnarray*} 
+D_0 &=& 0 \\
+D_1 &=& p_1 \left( N - S_{0} \right) \\
+D_2 &=& p_2 \left( N - S_0 - S_1 - D_1 \right) \\
+& \ldots &
+\end{eqnarray*}$$
+
+--
+
 ```{r, echo=FALSE}
 D <- tibble::enframe((waldD(wald)), value = "Nombre") %>% 
   mutate(Di = name-1, 'Probabilité' = Nombre/sum(Nombre)) %>% 
@@ -834,3 +843,7 @@ D %>%
 class: inverse, center, middle
 
 # Questions ?
+
+.center[
+<img src="https://media.giphy.com/media/9J8gnvAxmDFbG/giphy.gif" width=50%>
+]

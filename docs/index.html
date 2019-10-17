@@ -893,7 +893,7 @@ Pour simplifier le problème, nous allons supposer que tous les `\(q_i\)` sont �
 
 Nous avons donc:
 
-`$$\frac{S_1}{q}+\frac{S_2}{q^2}+\frac{S_3}{q^3}+\frac{S_4}{q^4}+\frac{S_5}{q^5}=N-S_0$$`
+`$$\sum_{j=1}^5 \frac{S_j}{q_1q_2\ldots q_j}=\sum_{j=1}^5 \frac{S_j}{q^j}=\frac{S_1}{q}+\frac{S_2}{q^2}+\frac{S_3}{q^3}+\frac{S_4}{q^4}+\frac{S_5}{q^5}=N-S_0$$`
 
 En utilisant nos données nous avons:
 
@@ -916,6 +916,15 @@ La valeur de `\(q\)` obtenue est 0.8510246.
 ---
 
 En utilisant le résultat précédent et les équations que nous avons trouvées, nous pouvons évaluer le nombre d'avions disparus `\(D_i\)`.
+
+`$$\begin{eqnarray*} 
+D_0 &amp;=&amp; 0 \\
+D_1 &amp;=&amp; p_1 \left( N - S_{0} \right) \\
+D_2 &amp;=&amp; p_2 \left( N - S_0 - S_1 - D_1 \right) \\
+&amp; \ldots &amp;
+\end{eqnarray*}$$`
+
+--
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -963,6 +972,10 @@ En utilisant le résultat précédent et les équations que nous avons trouvées
 class: inverse, center, middle
 
 # Questions ?
+
+.center[
+&lt;img src="https://media.giphy.com/media/9J8gnvAxmDFbG/giphy.gif" width=50%&gt;
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
