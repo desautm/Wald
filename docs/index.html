@@ -41,7 +41,7 @@ class: inverse, center, middle
 
 # Abraham Wald
 
-### Surtout connu pour se travaux sur l'analyse séquentielle, nous présenterons certains de ses travaux moins connus
+### Surtout connu pour se travaux sur l'analyse séquentielle, nous présenterons certains de ses travaux moins connus.
 
 ---
 class: inverse, center, middle
@@ -193,9 +193,13 @@ Les avions revenaient du combat couverts de trous de balles, mais les trous n'é
 
 ### Les trous de balles manquants
 
-Les officiers de l'armée y ont vu une opportunité d'efficacité.
+Les officiers de l'armée voulaient obtenir la même protection avec moins de blindage, en se concentrant sur les endroits en ayant davantage besoin.
 
-Obtenir la même protection avec moins de blindage, si on se concentre sur les endroits en ayant davantage besoin.
+--
+
+&gt; *The military was inclined to provide protection for those parts that on returning planes showed the most hits.*
+
+--
 
 Ils demandèrent à Wald quelle quantité de blindage ajouter aux diverses parties de l'avion.
 
@@ -318,6 +322,11 @@ background-size: cover
 ???
 
 STS-51-L crew: (front row) Michael J. Smith, Dick Scobee, Ronald McNair; (back row) Ellison Onizuka, Christa McAuliffe, Gregory Jarvis, Judith Resnik
+
+---
+class: center, middle
+
+&lt;iframe width="700" height="394" src="https://www.youtube.com/embed/j4JOjcDFtBE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 ---
 
@@ -700,6 +709,10 @@ class: center, inverse, middle
 |    Avions revenus avec 4 coups au but | 2      |
 |    Avions revenus avec 5 coups au but | 2      |
 
+--
+
+&gt; *It seems a little crazy, but what we really want to do is figure out what all the missing numbers are, or at least estimate them in a reasonable way. It looks at first sight as though this is a task for a conjuror rather than a mathematician.*
+
 ---
 
 ### Quelques notations
@@ -769,7 +782,7 @@ D_i &amp;=&amp; p_i \left( N_{j\geq i} \right) \\
 
 --
 
-Nous pouvons résoudre l'équation précédente par induction sur `\(i\)` car nous savons que `\(D_0=0\)`. Ainsi:
+Nous pouvons résoudre l'équation précédente par récurrence sur `\(i\)` car nous savons que `\(D_0=0\)`. Ainsi:
 
 `$$\begin{eqnarray*} 
 D_0 &amp;=&amp; 0 \\
@@ -866,7 +879,7 @@ Et donc:
 
 ### Un exemple
 
-Supposons que `\(N=400\)` avions ont été envoyés en mission. Le nombre d'avion survivants est:
+Supposons que `\(N=400\)` avions ont été envoyés en mission. Le nombre d'avions survivants est:
 
 `$$\begin{eqnarray*} 
 S_0 &amp;=&amp; 320 \\
@@ -902,12 +915,17 @@ En utilisant nos données nous avons:
 que nous pouvons écrire sous forme de polynôme de degré cinq:
 
 $$ 80q^5-32q^4-20q^3-4q^2-2q-2=0$$
-
 ---
 
 Si nous représentons le polynôme précédent.
 
 &lt;img src="index_files/figure-html/unnamed-chunk-10-1.png" width="504" style="display: block; margin: auto;" /&gt;
+
+---
+
+Si nous représentons le polynôme précédent.
+
+&lt;img src="index_files/figure-html/unnamed-chunk-11-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -931,7 +949,7 @@ D_2 &amp;=&amp; p_2 \left( N - S_0 - S_1 - D_1 \right) \\
   &lt;tr&gt;
    &lt;th style="text-align:right;"&gt; Di &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Nombre &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Probabilité &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Fraction sur 400 &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -943,27 +961,27 @@ D_2 &amp;=&amp; p_2 \left( N - S_0 - S_1 - D_1 \right) \\
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 11.9180343 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.5959017 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0297951 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 5.3753263 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2687663 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0134383 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1.5950262 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0797513 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0039876 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.7615048 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0380752 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0019038 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.3501084 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0175054 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0008753 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
